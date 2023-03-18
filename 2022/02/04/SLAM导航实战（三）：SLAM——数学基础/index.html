@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言 本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结。 由于SLAM部分篇幅较长，且内容较为重要，预计按照作者章节安排从数学基础、激光SLAM、视觉SLAM、其他SLAM四个部分对其进行整理归纳。  简介本章节作者通过介绍SLAM领域相关的数学基础部分，为后续SLAM算法的学习做好铺垫，具体数学推导笔者也会跟随作者在本篇总结做详细整理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAM导航实战（三）：SLAM——数学基础">
+<meta property="og:url" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="AppZ99&#39;s Blog">
+<meta property="og:description" content="前言 本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结。 由于SLAM部分篇幅较长，且内容较为重要，预计按照作者章节安排从数学基础、激光SLAM、视觉SLAM、其他SLAM四个部分对其进行整理归纳。  简介本章节作者通过介绍SLAM领域相关的数学基础部分，为后续SLAM算法的学习做好铺垫，具体数学推导笔者也会跟随作者在本篇总结做详细整理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208214348217.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208220839473.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152807808.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152827097.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209213429407.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209215919536.png">
+<meta property="og:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209220500189.png">
+<meta property="article:published_time" content="2022-02-04T09:52:22.000Z">
+<meta property="article:modified_time" content="2022-02-09T14:05:11.833Z">
+<meta property="article:author" content="AppZ99">
+<meta property="article:tag" content="SLAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208214348217.png">
+
+<link rel="canonical" href="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>SLAM导航实战（三）：SLAM——数学基础 | AppZ99's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AppZ99's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">OHHHH</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="AppZ99">
+      <meta itemprop="description" content="TKAW">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppZ99's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SLAM导航实战（三）：SLAM——数学基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-04 17:52:22" itemprop="dateCreated datePublished" datetime="2022-02-04T17:52:22+08:00">2022-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-09 22:05:11" itemprop="dateModified" datetime="2022-02-09T22:05:11+08:00">2022-02-09</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><strong>前言</strong></p>
+<p>本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结。</p>
+<p>由于SLAM部分篇幅较长，且内容较为重要，预计按照作者章节安排从<strong>数学基础、激光SLAM、视觉SLAM、其他SLAM</strong>四个部分对其进行整理归纳。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本章节作者通过介绍SLAM领域相关的<strong>数学基础</strong>部分，为后续SLAM算法的学习做好铺垫，具体数学推导笔者也会跟随作者在本篇总结做详细整理。</p>
+<span id="more"></span>
+<hr>
+<h2 id="SLAM发展简史"><a href="#SLAM发展简史" class="headerlink" title="SLAM发展简史"></a>SLAM发展简史</h2><p>最初，机器人的<strong>定位与建图</strong>是独立的两个问题，后续采用<strong>概率理论框架</strong>对机器人的<strong>不确定性</strong>进行讨论，同时把地图的<strong>位姿和地图路标</strong>做统一估计，才算是SLAM问题研究的起源。</p>
+<p>SLAM也从<strong>基于滤波</strong>的古典时期过渡到现在<strong>基于优化方法</strong>的现代时期。</p>
+<h3 id="数据关联、收敛、一致性"><a href="#数据关联、收敛、一致性" class="headerlink" title="数据关联、收敛、一致性"></a>数据关联、收敛、一致性</h3><p>数据关联：传感器数据与已构建数据进行匹配，闭环反馈就需要数据之间足够的关联性</p>
+<p>收敛：系统数据的收敛性是理论上衡量系统的可行性的指标之一</p>
+<p>一致性：分为<strong>强一致性</strong>和<strong>弱一致性</strong>，主要区别在于弱一致性是将偏差大的值的概率慢慢趋近于0，而强一致性是所有观测值在整个过程严格收敛于目标 $\theta$</p>
+<h3 id="SLAM基本理论"><a href="#SLAM基本理论" class="headerlink" title="SLAM基本理论"></a>SLAM基本理论</h3><p><strong>滤波方法：</strong>可以看成一种增量算法，获取每一时刻的信息，并将其分解至贝叶斯网络的概率分布来估计当前时刻的状态。</p>
+<p><strong>优化方法：</strong>不断累积获取到的信息，并基于此计算机器人轨迹及路标点。其计算信息存储在各个待估计变量间的约束中。通过<strong>近似线性化</strong>或者<strong>迭代</strong>的方法进行求解。</p>
+<p><strong>二者区别：</strong> <strong>最大似然</strong>及<strong>最小二乘</strong>的区别，优化方法之间限制于存储的问题，在约束结构稀疏性的研究下得到了进一步的解决，从而占据当前SLAM研究的主导地位。</p>
+<hr>
+<h2 id="SLAM中的概率理论"><a href="#SLAM中的概率理论" class="headerlink" title="SLAM中的概率理论"></a>SLAM中的概率理论</h2><p>机器人实际运行情况下存在<strong>传感器测量噪声、电机控制偏差、计算机软件计算精度近似</strong>等不确定性，故需要用概率对其不确定性进行描述估计。</p>
+<p>单纯的运动会导致机器人系统整体的不确定性增大，引入观测可以使系统整体的不确定性降低。</p>
+<h3 id="状态估计问题"><a href="#状态估计问题" class="headerlink" title="状态估计问题"></a>状态估计问题</h3><p>SLAM问题本质上属于<strong>状态估计问题</strong>，其估计观测的便是机器人的位姿以及路标点。</p>
+<p>机器人系统运动过程中不断对路标点以及自身位姿进行估计，二者概率描述如下：</p>
+<script type="math/tex; mode=display">
+P(z_k|x_k,m) \\
+P(x_k|x_{k-1},u_k)</script><p>SLAM问题解决的便是对于路标以及机器人位姿的估计问题。<em>（注：SLAM的估计并不是简单的路标估计和位姿估计的乘积）</em></p>
+<script type="math/tex; mode=display">
+P(x_k,m|Z_{0:k},U_{0:k},x_0)</script><h3 id="概率运动模型"><a href="#概率运动模型" class="headerlink" title="概率运动模型"></a>概率运动模型</h3><h4 id="速度运动模型"><a href="#速度运动模型" class="headerlink" title="速度运动模型"></a>速度运动模型</h4><p>在不考虑速度误差的情况下，机器人的状态转移方程可以表示为：</p>
+<script type="math/tex; mode=display">
+x_k=\begin{bmatrix}
+x' \\
+y' \\
+\theta '
+\end{bmatrix}
+=g(x_{k-1},u_k)=
+\begin{bmatrix}
+x \\
+y \\
+\theta 
+\end{bmatrix}+
+\begin{bmatrix}
+cos\theta   & -sin\theta  & 0\\
+sin\theta   & cos\theta  & 0\\
+0  & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+v_y \\
+\omega _z
+\end{bmatrix}
+\Delta t</script><p>上式需要满足两个条件：<em>运动时间很小；实际前馈运动不存在误差</em></p>
+<p>若此时考虑速度的误差，且<strong>$u_k、x_{k-1}、x_k$均服从高斯分布</strong>，此时$u_k$的协方差矩阵表示为：</p>
+<script type="math/tex; mode=display">
+\sum u_k=\begin{bmatrix}
+ \sigma_{v_x}^2  & 0 & 0\\
+ 0 & \sigma_{v_y}^2 & 0\\
+ 0 & 0 & \sigma_{w_z}^2
+\end{bmatrix}</script><p>由此，对状态转移函数进行一阶泰勒级数展开线性化后，计算$x_k$的协方差矩阵</p>
+<script type="math/tex; mode=display">
+\sum x_k=\begin{bmatrix}
+\frac{\partial g}{\partial x_{k-1}}   & \frac{\partial g}{\partial u_k}\\
+\end{bmatrix}
+\begin{bmatrix}
+\sum x_{k-1}  & 0_{3\times3}\\
+0_{3\times3}  & \sum x_{u_k}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial g}{\partial x_{k-1}}   & \frac{\partial g}{\partial u_k}\\
+\end{bmatrix}^T</script><p>同样的，上述模型也是基于两个前提条件：<em>运动时间很小；运动以及状态估计误差服从高斯分布</em></p>
+<h4 id="里程计模型"><a href="#里程计模型" class="headerlink" title="里程计模型"></a>里程计模型</h4><p>由于速度运动模型条件假设过于严格，故主要采用实际工程更加可行的里程计模型</p>
+<p>在考虑里程计误差，且变量服从高斯分布的情况下，其运动协方差表示为：</p>
+<script type="math/tex; mode=display">
+\sum u_k=\begin{bmatrix}
+ \sigma_{\Delta_x}^2 & 0 & 0 & 0 & 0 & 0\\
+ 0 & \sigma_{\Delta_y}^2 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & \sigma_{\Delta_\theta }^2
+\end{bmatrix}</script><p>上式表示机器人<strong>三维空间运动协方差矩阵</strong>，若机器人限制于二维平面，则由上式矩阵内形式表示，式中，各变量表示如下：</p>
+<script type="math/tex; mode=display">
+ \sigma_{\Delta_x}^2 = \xi_{\Delta xy} + \alpha_1 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_2 |\Delta  \theta | \\
+  \sigma_{\Delta_y}^2 = \xi_{\Delta xy} + \alpha_1 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_2 |\Delta  \theta | \\
+   \sigma_{\Delta_\theta}^2 = \xi_{\Delta \theta} + \alpha_3 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_4 |\Delta  \theta |</script><p>观察上式，里程计误差可以用底盘参数$\alpha_1 \sim \alpha_4$进行表示</p>
+<p><strong>误差直接设定为常数的理论依据：</strong>通常里程计数据是固定时间间隔发布，一定时间内的运动和旋转量基本一样</p>
+<h3 id="概率观测模型"><a href="#概率观测模型" class="headerlink" title="概率观测模型"></a>概率观测模型</h3><p>传感器观测两步走：<strong>提取环境路标特征；数据关联</strong></p>
+<h4 id="波束模型"><a href="#波束模型" class="headerlink" title="波束模型"></a>波束模型</h4><p>这部分的误差假设不太明白，所以暂时跳过</p>
+<h4 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h4><p>图结构主要使得概率模型中的各个随机变量关系变得更加直观，也使复杂的概率计算过程得到简化</p>
+<p>这部分主要使关于<strong>因子图</strong>内容，故对其他概念做简要概述</p>
+<p><strong>贝叶斯网络： </strong> <strong>有向无环图</strong>，分为<strong>静态贝叶斯网络、动态贝叶斯网络</strong> <em>（注：SLAM中应用就是动态贝叶斯网络）</em></p>
+<p><strong>马尔可夫网络：</strong> <strong>无向（有环）图</strong>，其中还涉及到<strong>团</strong>的概念</p>
+<p>本质上都是应用<strong>贝叶斯准则</strong>对其分解为各部分条件独立的情况下的随机变量的乘积，再将这些“小”乘积用图的形式表达出来变量之间的关系</p>
+<h4 id="因子图"><a href="#因子图" class="headerlink" title="因子图"></a>因子图</h4><p>引入一个简单的SLAM模型</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208214348217.png" alt="image-20220208214348217" style="zoom:67%;"></p>
+<p>其各部分的联合概率分布表示如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P(\boldsymbol{X}, \boldsymbol{m}, \boldsymbol{Z}, \boldsymbol{U})=&\left.\left.P\left(\boldsymbol{m}_{1}\right) P\left(\boldsymbol{m}_{2}\right) P\left(\boldsymbol{u}_{0}\right) P\left(\boldsymbol{u}_{1}\right) P\left(\boldsymbol{u}_{2}\right)\right\} \text { ( 先验, 可忽略) }\right) \times \\
+&\left.\left.P\left(\boldsymbol{x}_{0}\right) P\left(\boldsymbol{x}_{1} \mid \boldsymbol{x}_{0}, \boldsymbol{u}_{1}\right) P\left(\boldsymbol{x}_{2} \mid \boldsymbol{x}_{1}, \boldsymbol{u}_{2}\right) P\left(\boldsymbol{x}_{3} \mid \boldsymbol{x}_{2}, \boldsymbol{u}_{3}\right)\right\} \text { (运动) }\right) \times \\
+&\left.P\left(\boldsymbol{z}_{1} \mid \boldsymbol{x}_{1}, \boldsymbol{m}_{1}\right) P\left(\boldsymbol{z}_{2} \mid \boldsymbol{x}_{2}, \boldsymbol{m}_{1}\right) P\left(\boldsymbol{z}_{3} \mid \boldsymbol{x}_{3}, \boldsymbol{m}_{2}\right)\right\} \text { (观测) }
+\end{aligned}</script><p>上式由<strong>先验（已知，可忽略）、运动、观测</strong>组成，由传感器获得的$U、Z$后对不可测量的$X、m$进行推理估计，一般采用<strong>最大后验估计</strong></p>
+<script type="math/tex; mode=display">
+S_{MAP}=arg \max_S P(S|V) \\
+V=\{Z,U\} \\
+S=\{X,m\}</script><p>通过构建<strong>运动和观测</strong>两个约束构建因子函数</p>
+<script type="math/tex; mode=display">
+P(\boldsymbol{S} \mid \boldsymbol{V}) \propto \psi(\boldsymbol{S})=\prod \psi_{i}(\boldsymbol{X}, \boldsymbol{m}, \boldsymbol{Z}, \boldsymbol{U})</script><p>改写最大后验估计为</p>
+<script type="math/tex; mode=display">
+S_{MAP}=arg \max_S \psi(\boldsymbol{S})</script><p>引入噪声，且噪声符合高斯分布，得到运动和观测的噪声模型</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\boldsymbol{x}_{k}=g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)+\boldsymbol{R}_{k} \\
+\boldsymbol{z}_{k}=h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)+\boldsymbol{Q}_{k}
+\end{array}</script><p>用运动误差及观测误差构造两种因子项</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right) \propto \mathrm{e}^{-\frac{1}{2}\left(x_{k}-g\left(x_{k-1}, u_{k}\right)\right)^{\mathrm{T}} \Sigma_{R_{k}}^{-1}\left(x_{k}-g\left(x_{k-1}, u_{k}\right)\right)} \\
+\psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right) \propto \mathrm{e}^{-\frac{1}{2}\left(z_{k}-h\left(x_{k}, m_{j}\right)\right)^{\mathrm{T}} \Sigma_{Q_{k}}^{-1}\left(z_{k}-h\left(x_{k}, m_{j}\right)\right)}
+\end{array}</script><p>整理后得到</p>
+<script type="math/tex; mode=display">
+\psi(\boldsymbol{S}) \propto \prod_{i 1} \psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right) \cdot \prod_{i 2} \psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)</script><script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{S}_{\mathrm{MAP}}=& \arg \max _{s} \psi(\boldsymbol{S}) \\
+\propto &\left.\arg \max _{s}\left(\sum_{i 1} \ln \psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right)+\sum_{i 2} \ln \psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)\right) \\
+\propto & \arg \max _{s}\left(-\frac{1}{2} \sum_{i 1}\left(\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{\boldsymbol{R}_{k}}^{-1}\left(\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right)-\right.\\
+&\left.\frac{1}{2} \sum_{i 2}\left(\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{\boldsymbol{Q}_{k}}^{-1}\left(\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)\right) \\
+\propto &\left.\arg \min _{s}\left(\sum_{i 1}\left\|\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right\|_{\Sigma_{k_{k}}^{-1}}^{2}+\sum_{i 2}\left\|\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right\|_{\Sigma_{\ell_{k}}^{-1}}\right)^{2}\right)
+\end{aligned}</script><p><em>（引入对数，将乘法转化为加法）</em></p>
+<p>由上式可得，<strong>0均值高斯噪声</strong>SLAM问题采用最大后验估计等于最小二乘估计。其实满足0均值高斯噪声，最大后验等价最小均方误差等于最小二乘，因子图应用到SLAM问题，对滤波方法转向优化方法起到关键作用</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208220839473.png" alt="image-20220208220839473" style="zoom:67%;"></p>
+<hr>
+<h2 id="SLAM中的估计理论"><a href="#SLAM中的估计理论" class="headerlink" title="SLAM中的估计理论"></a>SLAM中的估计理论</h2><p>研究问题过程中，对某个参数感兴趣但却无法准确获得，，只能通过一组观测的样本值对猜测参数，这便是估计。</p>
+<h3 id="估计量的性质"><a href="#估计量的性质" class="headerlink" title="估计量的性质"></a>估计量的性质</h3><ul>
+<li>一致性</li>
+<li>偏差性</li>
+</ul>
+<h3 id="估计量的构建"><a href="#估计量的构建" class="headerlink" title="估计量的构建"></a>估计量的构建</h3><p>最好的估计应该为<strong>最小方差无偏估计（MVUE）</strong>，但其实现往往较难，故通常寻找近似方法。本书中作者介绍常用的近似方法总体下来构建思路大同小异，再次不一一描述，而是简要总结其构建步骤及各近似方法之间的联系。</p>
+<p>构建过程通常如下：</p>
+<ol>
+<li>构建代价函数</li>
+<li>对代价函数进行求导，并领倒数等于0，求出代价函数极值点</li>
+</ol>
+<p>经典估计有：<strong>最大似然估计、最小二乘估计</strong></p>
+<p>“动态”估计有：<strong>贝叶斯估计</strong> <em>（注：动态估计是笔者自己瞎取的，因为估计值设定为可变，不确定，故称为动态）</em></p>
+<h3 id="各估计的关系"><a href="#各估计的关系" class="headerlink" title="各估计的关系"></a>各估计的关系</h3><p>此处直接引用作者的两张图做整理，直接总结了本小节的核心内容</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152807808.png" alt="image-20220209152807808" style="zoom:67%;"></p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152827097.png" alt="image-20220209152827097" style="zoom:67%;"></p>
+<hr>
+<h2 id="基于贝叶斯网络的状态估计"><a href="#基于贝叶斯网络的状态估计" class="headerlink" title="基于贝叶斯网络的状态估计"></a>基于贝叶斯网络的状态估计</h2><p>该部分主要是滤波算法的介绍，后续专门整理，故先跳过</p>
+<hr>
+<h2 id="基于因子图的状态估计"><a href="#基于因子图的状态估计" class="headerlink" title="基于因子图的状态估计"></a>基于因子图的状态估计</h2><p>贝叶斯网络中的最大后验估计等效于<strong>因子图中的最小二乘估计</strong></p>
+<p>对于最小二乘估计通常有两个解法：<strong>线性近似处理；迭代求解</strong></p>
+<h3 id="直接求解法"><a href="#直接求解法" class="headerlink" title="直接求解法"></a>直接求解法</h3><p>主要是采用了<strong>Cholesky；QR</strong>两种分解方法对方程进行求解</p>
+<h3 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h3><h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+\operatorname{do}\left\{x^{(k+1)}=x^{(k)}-\alpha \cdot \nabla \psi\left(x^{(k)}\right)\right. \\
+\} \text { while }\left(\psi\left(x^{(k+1)}\right)<\psi\left(x^{(k)}\right)\right)
+\end{array}</script><p>沿梯度方向不断逼近目标点，但迭代过程中<strong>步长不变</strong>使得其可能出现<strong>迭代次数过多（步长太小）；目标点附近震荡（步长太长）</strong>的问题</p>
+<p>机器人应用迭代法时，需要对机器人的空间位姿 pose 进行求导，但其内部存在的额外约束导致求导和求和运算无法直接进行，此时就需要将其转换到<strong>李代数</strong>上进行求导和求和操作。</p>
+<h4 id="最速下降法"><a href="#最速下降法" class="headerlink" title="最速下降法"></a>最速下降法</h4><script type="math/tex; mode=display">
+\alpha_{k}=\arg \min _{\alpha \geqslant 0} \psi\left(\boldsymbol{x}^{(k)}-\alpha \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)\right)</script><p>为解决梯度下降的问题，采用可变步长的方法，通常步长方向取<strong>垂直于两端梯度等高线的方向</strong></p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209213429407.png" alt="image-20220209213429407" style="zoom:67%;"></p>
+<h4 id="高斯-牛顿法"><a href="#高斯-牛顿法" class="headerlink" title="高斯-牛顿法"></a>高斯-牛顿法</h4><p>几个概念：</p>
+<ul>
+<li>梯度：多维自变量与一维因变量函数中，函数的一阶导数</li>
+<li>海森矩阵：多维自变量与一维因变量函数中，函数的二阶导数</li>
+<li>雅可比矩阵：多维自变量与多维因变量函数中，函数的一阶导数</li>
+<li>多个海森矩阵组合：多维自变量与多维自变量函数中，函数的二阶导数</li>
+</ul>
+<p>由于需要对某一点自变量做二次泰勒展开，故需要求其梯度和海森矩阵</p>
+<script type="math/tex; mode=display">
+\psi(x)=\sum_{i}\left\|\boldsymbol{y}_{i}-f\left(\boldsymbol{x}_{i}\right)\right\|_{\Sigma_{i}^{-1}}^{2}=\sum_{i=1}^{m}\left\|e_{i}(\boldsymbol{x})\right\|^{2}=\|e(\boldsymbol{x})\|^{2}=e(\boldsymbol{x})^{\mathrm{T}} \cdot e(\boldsymbol{x})</script><p>梯度和海森矩阵分别为</p>
+<script type="math/tex; mode=display">
+\underbrace{\nabla \psi}_{g r a d_{\psi}}=2 \cdot \text { Jacobian }_{e}^{\mathrm{T}} \cdot e(\boldsymbol{x}) \\
+\underbrace{\nabla^{2} \psi(x)}_{\text {Hessian }_{\psi}} \approx 2 \cdot \text { Jacobian }_{e}^{\mathrm{T}} \cdot \text { Jacobian }_{e}</script><p>代入代价函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\nabla \psi(\boldsymbol{x}) & \approx \nabla\left(\psi\left(\boldsymbol{x}^{(k)}\right)+\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)^{\mathrm{T}} \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)+\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)^{\mathrm{T}} \cdot \nabla^{2} \psi\left(\boldsymbol{x}^{(k)}\right) \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)\right) \\
+&=\nabla \psi\left(\boldsymbol{x}^{(k)}\right)+\nabla^{2} \psi\left(\boldsymbol{x}^{(k)}\right) \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)=0 \\
+& \Leftrightarrow 2 \cdot \boldsymbol{J a c o b i a n}_{e}^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right)+2 \cdot \boldsymbol{J a c o b i a n}_{e}{ }^{\mathrm{T}} \cdot \boldsymbol{J a c o b i a n}_{e} \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)=0 \\
+\text { 令 } \Delta \boldsymbol{x}=\boldsymbol{x}-\boldsymbol{x}^{(k)}, & \text { 那么: } \boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}=-\boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e} 。
+\end{aligned}</script><p>则此时下一个迭代点为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)}=\boldsymbol{x}^{(k)}-\left(\boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}{ }^{\mathrm{T}} \boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}\right)^{-1} \cdot \boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}{ }^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right)</script><p>其中雅可比的转置与自身的乘积采用<strong>Cholesky；QR</strong>求解</p>
+<h4 id="列文伯格-马夸尔特算法"><a href="#列文伯格-马夸尔特算法" class="headerlink" title="列文伯格-马夸尔特算法"></a>列文伯格-马夸尔特算法</h4><p>高斯-牛顿法只能在目标点附近有较好的效果，且不一定能向目标点方向迭代</p>
+<script type="math/tex; mode=display">
+\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}+\mu_{k} \cdot \boldsymbol{I}\right) \cdot \Delta \boldsymbol{x}=-\boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e} \\
+\Delta \boldsymbol{x}=-\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}+\mu_{k} \cdot \boldsymbol{I}\right)^{-1} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}</script><p>本质上引入了$u_k$这个<strong>阻尼系数</strong>，其取值取决于如下比值</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Delta \psi=\psi\left(\boldsymbol{x}^{(k)}+\Delta \boldsymbol{x}\right)-\psi\left(\boldsymbol{x}^{(k)}\right)=\psi\left(\boldsymbol{x}^{(k+1)}\right)-\psi\left(\boldsymbol{x}^{(k)}\right) \\
+\Delta \varphi=\varphi(\Delta \boldsymbol{x})-\varphi(\boldsymbol{0})=2 \Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}+\Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}
+\end{array}  \\</script><script type="math/tex; mode=display">
+\gamma_{k}=\frac{\Delta \psi}{\Delta \varphi}=\frac{\psi\left(\boldsymbol{x}^{(k+1)}\right)-\psi\left(\boldsymbol{x}^{(k)}\right)}{2 \Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}+\Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}}</script><p>通过$\gamma_{k}$来调节$\mu_{k}$：趋近1，高斯-牛顿主导；逼近0，梯度下降主导；比值小于0，则拒绝迭代，修改阻尼系数。</p>
+<h4 id="狗腿算法"><a href="#狗腿算法" class="headerlink" title="狗腿算法"></a>狗腿算法</h4><p>列文伯格-马夸尔特算法存在拒绝迭代而浪费算力的情况</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Delta \boldsymbol{x}_{\mathrm{SD}}=-\alpha_{k} \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)=-\alpha_{k} \cdot 2 \cdot \boldsymbol{J a c o b i a n}_{e}^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right) \\
+\Delta \boldsymbol{x}_{\mathrm{GN}}=-\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}\right)^{-1} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}
+\end{array}</script><p>根据上述两个变量对阻尼系数进行调整，具体调整方式，参考下图</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209215919536.png" alt="image-20220209215919536" style="zoom:67%;"></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>可以清楚发现，每一种算法都是为了解决上面算法的问题作出的改进，理论上，算法不断优化，效果不断提升，但同时，其对算力的要求也不断增加，故需要根据实际情况选择对应的算法。</p>
+<h4 id="常用优化工具"><a href="#常用优化工具" class="headerlink" title="常用优化工具"></a>常用优化工具</h4><ul>
+<li>g2o（轻量，所需依赖少）</li>
+<li>ceres-Slover（数值自动求导，避免复杂雅可比计算）</li>
+<li>GTSAM（优化过程能增量计算，优化速度快）</li>
+</ul>
+<p>基本用法</p>
+<ol>
+<li>图结构定义非线性最小二乘，定义状态量，约束关系</li>
+<li>选用优化策略</li>
+<li>启动求解器迭代</li>
+</ol>
+<h2 id="现主流SLAM算法"><a href="#现主流SLAM算法" class="headerlink" title="现主流SLAM算法"></a>现主流SLAM算法</h2><p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209220500189.png" alt="image-20220209220500189" style="zoom:67%;"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>AppZ99
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" title="SLAM导航实战（三）：SLAM——数学基础">http://example.com/2022/02/04/SLAM导航实战（三）：SLAM——数学基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SLAM/" rel="tag"><i class="fa fa-tag"></i> SLAM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" rel="prev" title="DR_CAN课程学习——现代控制理论">
+      <i class="fa fa-chevron-left"></i> DR_CAN课程学习——现代控制理论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="next" title="Ubuntu18.04下pytorch深度学习环境搭建">
+      Ubuntu18.04下pytorch深度学习环境搭建 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLAM%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2"><span class="nav-text">SLAM发展简史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%85%B3%E8%81%94%E3%80%81%E6%94%B6%E6%95%9B%E3%80%81%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-text">数据关联、收敛、一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SLAM%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA"><span class="nav-text">SLAM基本理论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLAM%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E7%90%86%E8%AE%BA"><span class="nav-text">SLAM中的概率理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1%E9%97%AE%E9%A2%98"><span class="nav-text">状态估计问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%BF%90%E5%8A%A8%E6%A8%A1%E5%9E%8B"><span class="nav-text">概率运动模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9F%E5%BA%A6%E8%BF%90%E5%8A%A8%E6%A8%A1%E5%9E%8B"><span class="nav-text">速度运动模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8C%E7%A8%8B%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-text">里程计模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%A7%82%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="nav-text">概率观测模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A2%E6%9D%9F%E6%A8%A1%E5%9E%8B"><span class="nav-text">波束模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="nav-text">概率图模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%A0%E5%AD%90%E5%9B%BE"><span class="nav-text">因子图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLAM%E4%B8%AD%E7%9A%84%E4%BC%B0%E8%AE%A1%E7%90%86%E8%AE%BA"><span class="nav-text">SLAM中的估计理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">估计量的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-text">估计量的构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E4%BC%B0%E8%AE%A1%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">各估计的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1"><span class="nav-text">基于贝叶斯网络的状态估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%9B%A0%E5%AD%90%E5%9B%BE%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1"><span class="nav-text">基于因子图的状态估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%B1%82%E8%A7%A3%E6%B3%95"><span class="nav-text">直接求解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-text">优化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E9%80%9F%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-text">最速下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E6%96%AF-%E7%89%9B%E9%A1%BF%E6%B3%95"><span class="nav-text">高斯-牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E6%96%87%E4%BC%AF%E6%A0%BC-%E9%A9%AC%E5%A4%B8%E5%B0%94%E7%89%B9%E7%AE%97%E6%B3%95"><span class="nav-text">列文伯格-马夸尔特算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%97%E8%85%BF%E7%AE%97%E6%B3%95"><span class="nav-text">狗腿算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-text">常用优化工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E4%B8%BB%E6%B5%81SLAM%E7%AE%97%E6%B3%95"><span class="nav-text">现主流SLAM算法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AppZ99"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">AppZ99</p>
+  <div class="site-description" itemprop="description">TKAW</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/APPZ99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;APPZ99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:925455893@qq.com" title="E-Mail → mailto:925455893@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1872048272&auto=1&height=66">
+        </iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AppZ99</span>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":500},"mobile":{"show":true}});</script></body>
+</html>

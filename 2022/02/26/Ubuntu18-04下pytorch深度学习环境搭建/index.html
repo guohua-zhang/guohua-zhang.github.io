@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言 大三下学期专业有一门《模式识别》的课程，主要是涉及其中深度学习这个分支，由于需要算力支持，所以借同学的电脑后，基于Ubuntu18.04系统下配置pytorch深度学习框架的环境，其中遇到诸多困难，在这里做总结记录。  环境版本 Ubuntu18.04 LTS Anaconda x86 linux支持版 python3.9 pytorch 1.10.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu18.04下pytorch深度学习环境搭建">
+<meta property="og:url" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="AppZ99&#39;s Blog">
+<meta property="og:description" content="前言 大三下学期专业有一门《模式识别》的课程，主要是涉及其中深度学习这个分支，由于需要算力支持，所以借同学的电脑后，基于Ubuntu18.04系统下配置pytorch深度学习框架的环境，其中遇到诸多困难，在这里做总结记录。  环境版本 Ubuntu18.04 LTS Anaconda x86 linux支持版 python3.9 pytorch 1.10.2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093633842.png">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093909109.png">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227094305219.png">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227095240649.png">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227100413844.png">
+<meta property="og:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227101623594.png">
+<meta property="article:published_time" content="2022-02-26T14:42:19.000Z">
+<meta property="article:modified_time" content="2022-02-27T02:21:42.686Z">
+<meta property="article:author" content="AppZ99">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="Ubuntu18.04">
+<meta property="article:tag" content="Anaconda">
+<meta property="article:tag" content="DL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093633842.png">
+
+<link rel="canonical" href="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ubuntu18.04下pytorch深度学习环境搭建 | AppZ99's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AppZ99's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">OHHHH</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="AppZ99">
+      <meta itemprop="description" content="TKAW">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppZ99's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu18.04下pytorch深度学习环境搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-26 22:42:19" itemprop="dateCreated datePublished" datetime="2022-02-26T22:42:19+08:00">2022-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-27 10:21:42" itemprop="dateModified" datetime="2022-02-27T10:21:42+08:00">2022-02-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><strong>前言</strong></p>
+<p>大三下学期专业有一门《模式识别》的课程，主要是涉及其中<strong>深度学习</strong>这个分支，由于需要算力支持，所以借同学的电脑后，基于<strong>Ubuntu18.04</strong>系统下配置<strong>pytorch</strong>深度学习框架的环境，其中遇到诸多困难，在这里做总结记录。</p>
+</blockquote>
+<h2 id="环境版本"><a href="#环境版本" class="headerlink" title="环境版本"></a>环境版本</h2><ul>
+<li>Ubuntu18.04 LTS</li>
+<li>Anaconda x86 linux支持版 python3.9</li>
+<li>pytorch 1.10.2</li>
+</ul>
+<span id="more"></span>
+<h2 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h2><ul>
+<li>Nvidia RTX-1070</li>
+<li>CUDA 11.3</li>
+<li>cuDNN CUDA11.3 对应版本8.2.0</li>
+</ul>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><h3 id="Ubuntu18-04"><a href="#Ubuntu18-04" class="headerlink" title="Ubuntu18.04"></a>Ubuntu18.04</h3><p>主要是双系统配置，其中完全跟着此篇教程进行双系统安装<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/54d9a3a695cc">Ubuntu18.04双系统安装</a></p>
+<p><del>(之前本人笔记本是DELL，究极折磨，一天送去维修两次)</del></p>
+<h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><p>直接去官网下载对应的版本，<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda官网</a></p>
+<h3 id="显卡驱动-1"><a href="#显卡驱动-1" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>首先检查ubuntu系统推荐的相关驱动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu-drivers devices</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093633842.png" alt="image-20220227093633842"></p>
+<p>执行后会得到类似上面的一张图，其中会有一项<strong>recommended</strong>，这个是ubuntu推荐安装的驱动，这里笔者比较怂，去官网查看对应版本的显卡驱动<a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/index.aspx">Nvidia显卡驱动下载</a></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093909109.png" alt="image-20220227093909109" style="zoom:67%;"></p>
+<p>查看后发现官方推荐是510的驱动，和ubuntu推荐安装是同一个版本，所以直接通过ubuntu系统安装对应驱动，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ubuntu-drivers autoinstall</span><br></pre></td></tr></table></figure>
+<p>执行指令，查看驱动安装情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<p>若正常显示如下，则驱动安装完成</p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227094305219.png" alt="image-20220227094305219" style="zoom:67%;"></p>
+<p>其中笔者框选出来的地方是对应的驱动版本，笔者是510版本，同时官方安装驱动后，会在驱动版本显示右侧（框选框的右侧）显示<strong>CUDA</strong>支持版本，笔者当时是<strong>CUDA11.6</strong>，即RTX1070最高支持11.6版本的CUDA</p>
+<p><strong>（注：是最高支持版本，不是已安装好的版本，这个时候CUDA还没安装！）</strong></p>
+<p>网上很多资料是非Ubuntu自带安装驱动，这里贴一条笔者当时查的教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaohuan2017/article/details/108670724">Nvidia驱动安装</a></p>
+<h3 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h3><p>这个是折磨笔者最久的一个部分，最后在知乎找到一份靠谱的教程</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122286055">NVIDIA CUDA Toolkit 11.0 安装与卸载</a></p>
+<p>这里笔者没有跟着安装11.0的版本，而是先查看了pytorch官网当时主要支持的CUDA版本</p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227095240649.png" alt="image-20220227095240649" style="zoom:80%;"></p>
+<p>可以看到，上面官网是11.3的版本，所以笔者相应的安装了11.3的版本<strong>（注：不过后来问同学，更多是使用11.0或11.1）</strong></p>
+<p>这里有一个坑，当时用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure>
+<p>查看CUDA版本时候，提示笔者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nvidia-cuda-toolkits</span><br></pre></td></tr></table></figure>
+<p>笔者以为只是个相应的支持工具包，就安装了，后面确实可以查看版本，但11.3安装完成后，显示的版本还是<strong>CUDA9.1</strong>，才搞明白这条指令相当于ubuntu下帮你安装了9.1的CUDA，后面删除原CUDA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge nvidia-cuda-toolkit</span><br></pre></td></tr></table></figure>
+<p>具体参考这篇博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011119817/article/details/100525948">【nvidia】2.cuda旧版本卸载</a></p>
+<p>卸载后，笔者发现连版本都查不了了……<del>（差点暴毙）</del>，后面找到了本节介绍的教程，发现是没有把他CUDA11.3加入系统环境，加入环境后，查看CUDA为11.3版本。</p>
+<h3 id="cuDNN安装"><a href="#cuDNN安装" class="headerlink" title="cuDNN安装"></a>cuDNN安装</h3><p>这个安装主要费劲在Nvidia官网账号的注册上（国内网速dddd），其他只要找到<strong>CUDA版本对应的cuDNN版本即可</strong></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227100413844.png" alt="image-20220227100413844" style="zoom:80%;"></p>
+<p>如上，笔者11.3版本，对应是8.2.1的cuDNN版本</p>
+<p>下载后还要进行一系列操作，具体如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64 </span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h </span><br><span class="line">sudo chmod a+r /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+<p><strong>注意：上面cuda要查看自己下载到local文件夹的cuda文件夹的名字，笔者是cuda-11.3</strong></p>
+<p>具体可以参考教程<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44003563/article/details/90312965">ubuntu18.04配置cudnn详细步骤</a></p>
+<h3 id="pytorch"><a href="#pytorch" class="headerlink" title="pytorch"></a>pytorch</h3><p>在安装pytorch之前，需要先了解一下anaconda的虚拟环境。</p>
+<p>由于深度学习对应诸多模块版本不同的问题，anaconda可以建立一个虚拟环境，该环境用户可以任意配置相关的模块版本以便满足不同模型的需求而不会和系统模块产生冲突，同时避免环境崩坏而整个系统环境不能正常使用的情况<del>（系统各种版本冲突，最后无奈只能重装整个环境）</del>。</p>
+<p>具体anaconda配置pytorch可参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25198543">最省心的Python版本和第三方库管理——初探Anaconda</a></p>
+<p>上述教程主要是win下，笔者win跟着做没有什么问题，但ubuntu下还是存在部分问题，下面做部分总结。</p>
+<p>首先我们创建一个虚拟空间并激活</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n lane_det python=3.9</span><br><span class="line">activate lane_det</span><br></pre></td></tr></table></figure>
+<p>激活后，可以用如下指令查该虚拟环境还有模块</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>可以发现并除了几个基本模块，没有其他模块。我们先安装pytorch相关模块</p>
+<p>前往<a target="_blank" rel="noopener" href="https://pytorch.org/">pytorch官网</a>，选择自己对应版本<em>(注：这里用conda，此指令是在虚拟环境执行，pip可能会安装到全局（应该）)</em></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227101623594.png" alt="image-20220227101623594"></p>
+<p>复制上述指令后，等待安装完成，安装完成后，执行查看指令，查看模块是否已经安装。</p>
+<p>至此pytorch深度学习的环境搭建基本结束，但这里笔者还遇到几个问题，再做总结。</p>
+<p>启动jupyter notebook后，导入torch模块，不能找到，找了很多教程<del>（主要关键词不知道搜什么）</del>最后搜到如下教程，成果解决了这个问题</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39504519/article/details/108039594">解决jupyter notebook无法找到虚拟环境的问题</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>AppZ99
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Ubuntu18.04下pytorch深度学习环境搭建">http://example.com/2022/02/26/Ubuntu18-04下pytorch深度学习环境搭建/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pytorch/" rel="tag"><i class="fa fa-tag"></i> pytorch</a>
+              <a href="/tags/Ubuntu18-04/" rel="tag"><i class="fa fa-tag"></i> Ubuntu18.04</a>
+              <a href="/tags/Anaconda/" rel="tag"><i class="fa fa-tag"></i> Anaconda</a>
+              <a href="/tags/DL/" rel="tag"><i class="fa fa-tag"></i> DL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="prev" title="SLAM导航实战（三）：SLAM——数学基础">
+      <i class="fa fa-chevron-left"></i> SLAM导航实战（三）：SLAM——数学基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/" rel="next" title="Ultral-Fast-Lane-Detection 整理">
+      Ultral-Fast-Lane-Detection 整理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E7%89%88%E6%9C%AC"><span class="nav-text">环境版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="nav-text">显卡驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B"><span class="nav-text">安装流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu18-04"><span class="nav-text">Ubuntu18.04</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anaconda"><span class="nav-text">Anaconda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8-1"><span class="nav-text">显卡驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CUDA%E5%AE%89%E8%A3%85"><span class="nav-text">CUDA安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cuDNN%E5%AE%89%E8%A3%85"><span class="nav-text">cuDNN安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pytorch"><span class="nav-text">pytorch</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AppZ99"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">AppZ99</p>
+  <div class="site-description" itemprop="description">TKAW</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/APPZ99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;APPZ99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:925455893@qq.com" title="E-Mail → mailto:925455893@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1872048272&auto=1&height=66">
+        </iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AppZ99</span>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":500},"mobile":{"show":true}});</script></body>
+</html>

@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>DR_CAN课程学习——动态系统建模与分析</title>
+    <url>/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>基于B站UP主<strong>DR_CAN</strong>视频所作总结笔记</p>
+<p>视频链接：<a href="https://space.bilibili.com/230105574/channel/seriesdetail?sid=1569598">DR_CAN——动态系统建模与分析</a></p>
+</blockquote>
+<h2 id="电路系统建模、基尔霍夫定律"><a href="#电路系统建模、基尔霍夫定律" class="headerlink" title="电路系统建模、基尔霍夫定律"></a>电路系统建模、基尔霍夫定律</h2><span id="more"></span>
+<p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-02.jpg" alt="动态系统的建模与分析-02" style="zoom:80%;"></p>
+<hr>
+<h2 id="流体系统建模"><a href="#流体系统建模" class="headerlink" title="流体系统建模"></a>流体系统建模</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-03.jpg" alt="动态系统的建模与分析-03" style="zoom:80%;"></p>
+<hr>
+<h2 id="拉普拉斯变换"><a href="#拉普拉斯变换" class="headerlink" title="拉普拉斯变换"></a>拉普拉斯变换</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-04.jpg" alt="动态系统的建模与分析-04" style="zoom:80%;"></p>
+<hr>
+<h2 id="拉氏变换收敛域、逆变换、传递函数"><a href="#拉氏变换收敛域、逆变换、传递函数" class="headerlink" title="拉氏变换收敛域、逆变换、传递函数"></a>拉氏变换收敛域、逆变换、传递函数</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-05.jpg" alt="动态系统的建模与分析-05" style="zoom:80%;"></p>
+<hr>
+<h2 id="一阶系统的单位阶跃响应"><a href="#一阶系统的单位阶跃响应" class="headerlink" title="一阶系统的单位阶跃响应"></a>一阶系统的单位阶跃响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-06.jpg" alt="动态系统的建模与分析-06" style="zoom:80%;"></p>
+<hr>
+<h2 id="频率响应"><a href="#频率响应" class="headerlink" title="频率响应"></a>频率响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-07.jpg" alt="动态系统的建模与分析-07" style="zoom:80%;"></p>
+<hr>
+<h2 id="一阶系统频率响应"><a href="#一阶系统频率响应" class="headerlink" title="一阶系统频率响应"></a>一阶系统频率响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-08.jpg" alt="动态系统的建模与分析-08" style="zoom:80%;"></p>
+<hr>
+<h2 id="二阶系统对初始条件的动态响应"><a href="#二阶系统对初始条件的动态响应" class="headerlink" title="二阶系统对初始条件的动态响应"></a>二阶系统对初始条件的动态响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-10.jpg" alt="动态系统的建模与分析-10" style="zoom:80%;"></p>
+<hr>
+<h2 id="二阶系统单位阶跃响应"><a href="#二阶系统单位阶跃响应" class="headerlink" title="二阶系统单位阶跃响应"></a>二阶系统单位阶跃响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-10-16435516522085.jpg" alt="动态系统的建模与分析-10" style="zoom:80%;"></p>
+<hr>
+<h2 id="二阶系统的性能分析与比较"><a href="#二阶系统的性能分析与比较" class="headerlink" title="二阶系统的性能分析与比较"></a>二阶系统的性能分析与比较</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-11.jpg" alt="动态系统的建模与分析-11" style="zoom:80%;"></p>
+<hr>
+<h2 id="二阶系统频率响应"><a href="#二阶系统频率响应" class="headerlink" title="二阶系统频率响应"></a>二阶系统频率响应</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-12-16435516613716.jpg" alt="动态系统的建模与分析-12" style="zoom:80%;"></p>
+<hr>
+<h2 id="伯德图"><a href="#伯德图" class="headerlink" title="伯德图"></a>伯德图</h2><p><img src="/2022/01/30/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/动态系统的建模与分析-13.jpg" alt="动态系统的建模与分析-13" style="zoom:80%;"></p>
+]]></content>
+      <tags>
+        <tag>DR_CAN</tag>
+        <tag>Theoretical Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dr_CAN课程学习——工程数学基础</title>
+    <url>/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>基于B站UP主<strong>DR_CAN</strong>视频所作的总结笔记</p>
+<p>视频链接：<a href="https://space.bilibili.com/230105574/channel/seriesdetail?sid=1569595">DR_CAN——工程数学基础</a></p>
+</blockquote>
+<h2 id="特征值与特征向量"><a href="#特征值与特征向量" class="headerlink" title="特征值与特征向量"></a>特征值与特征向量</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于一个给定的线性变换 $A$ ，它的特征向量 $v$ 经过这个线性变换的作用后，得到的新向量仍然与原来的 $v$ 保持在同一直线上，但其长度或方向或许会改变，即：</p>
+<script type="math/tex; mode=display">
+Av = \lambda v</script><p>其中 $\lambda$ 为标量，即特征向量的长度在该线性变换下缩放的比例，称为其特征值。</p>
+<span id="more"></span>
+<p>$e.g.$</p>
+<p>将线性变换矩阵 $A$ 分别与向量 $v_1、v_2$ 相乘，看变换后向量是否与原向量保持同一直线上。</p>
+<script type="math/tex; mode=display">
+A=
+\begin{pmatrix} 
+1 & 1  \\ 
+4 & -2  \\ 
+\end{pmatrix} 、 
+
+v_1 = 
+\begin{pmatrix} 
+1 \\ 
+2 \\
+\end{pmatrix}、
+
+v_2 = 
+\begin{pmatrix} 
+1 \\ 
+1 \\
+\end{pmatrix}</script><p>可以发现 $v_2$ 在 $A$ 的作用下变换成 $2v_2$ 故满足其上述定义。</p>
+<h3 id="求解特征值、特征向量"><a href="#求解特征值、特征向量" class="headerlink" title="求解特征值、特征向量"></a>求解特征值、特征向量</h3><script type="math/tex; mode=display">
+Av = \lambda v \\
+Av - \lambda v = 0 \\
+(A - \lambda I)v = 0 (\ast)\\
+|A - \lambda I| = 0</script><p><em>注：上式中 $(\ast)$式需要有非零解，则其行列式需为零</em></p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="化对角矩阵"><a href="#化对角矩阵" class="headerlink" title="化对角矩阵"></a>化对角矩阵</h4><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128090348822.png" alt="image-20220128090348822" style="zoom:67%;"></p>
+<h4 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h4><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128090433204.png" alt="image-20220128090433204" style="zoom:67%;"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>加深了对于特征向量、特征值的理解</li>
+<li>重温了特征值求解方法</li>
+<li>理解了对角化公式的由来</li>
+<li>理解了对角化在解耦过程中的应用</li>
+</ol>
+<hr>
+<h2 id="线性化、泰勒级数、泰勒公式"><a href="#线性化、泰勒级数、泰勒公式" class="headerlink" title="线性化、泰勒级数、泰勒公式"></a>线性化、泰勒级数、泰勒公式</h2><h3 id="线性系统"><a href="#线性系统" class="headerlink" title="线性系统"></a>线性系统</h3><p>条件：满足叠加原理</p>
+<ol>
+<li>$x_1、x_2$ 为系统方程的解</li>
+<li>$x_3 = k_1 x_1 + k_2 x_2$ （$k_1、k_2$ 为常数）</li>
+<li>$x_3$ 为系统方程的解</li>
+</ol>
+<h3 id="泰勒级数"><a href="#泰勒级数" class="headerlink" title="泰勒级数"></a>泰勒级数</h3><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128092750222.png" alt="image-20220128092750222"></p>
+<h3 id="线性化"><a href="#线性化" class="headerlink" title="线性化"></a>线性化</h3><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/工程数学-4.jpg" alt="工程数学-4" style="zoom:67%;"></p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><hr>
+<h2 id="卷积含义、LTI的冲激响应及卷积"><a href="#卷积含义、LTI的冲激响应及卷积" class="headerlink" title="卷积含义、LTI的冲激响应及卷积"></a>卷积含义、LTI的冲激响应及卷积</h2><h3 id="LTI-System"><a href="#LTI-System" class="headerlink" title="LTI System"></a>LTI System</h3><p>满足<strong>叠加原理、时不变原理</strong>的系统称为线性时不变系统。</p>
+<h3 id="LTI-中拉普拉斯变换与卷积的关系"><a href="#LTI-中拉普拉斯变换与卷积的关系" class="headerlink" title="LTI 中拉普拉斯变换与卷积的关系"></a>LTI 中拉普拉斯变换与卷积的关系</h3><p>系统表达</p>
+<script type="math/tex; mode=display">
+F(s)H(s)=X(s)</script><p>进行拉氏逆变换后，等于<strong>系统时域上输出与传函的卷积</strong></p>
+<script type="math/tex; mode=display">
+f(t)\ast h(t) = x(t)</script><h3 id="LTI-中冲激响应"><a href="#LTI-中冲激响应" class="headerlink" title="LTI 中冲激响应"></a>LTI 中冲激响应</h3><p>根据 LTI 的叠加性质，任意的输出可以视为<strong>多个冲激响应的叠加</strong></p>
+<p>时间 $t$ 为第$i$ 个时刻冲激响应时间$i\Delta_T$，则系统输出：</p>
+<script type="math/tex; mode=display">
+X(t) = \sum_{i=0}^i \Delta_Tf(i\Delta_T)h_\Delta(t - i\Delta_T)</script><p>将$\Delta_T$ 趋向0取极限，则$\Delta_T = d\tau, i\Delta_T=\tau$</p>
+<p>则此时有输出函数：</p>
+<script type="math/tex; mode=display">
+X(t) = \int_0^t f(\tau)h(t-\tau)d\tau \\
+即:X(t)=f(t)\ast h(t)</script><h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p>根据本节的内容，其实任意的LTI 系统都可以由一系列的冲激响应去定义整个系统。那么如果我们在一个LTI 系统下输入一段信号并与一种近似冲激响应的信号做卷积处理，就可以理解为——我们把输入信号放在了对应的冲激响应的系统中。<em>（注：这部分MATLAB实践放在后续章节中去分析）</em></p>
+<p>思考过程：连续的输入信号切割成每一个单位冲激响应与某一时刻输入信号大小的乘积，即$t$ 时刻的输入可以看作是$\Delta_Tf(t)$ 大小的单位冲击响应，然后根据LTI 系统的叠加原理，将$t$ 时刻前的所有输入响应进行叠加，即可得到$t$ 时刻的输出信号，$\Delta_T$ 去极限就是积分，也就得到最终的卷积形式。</p>
+<p>视频最后的例子的理解：每一时刻说话的声音由一个个浴室帘后声音的冲激响应叠加组成，其冲激响应特点是沉闷的回声，所有进行卷积后得到了人躲在浴室帘后说话的感觉。</p>
+<hr>
+<h2 id="欧拉公式证明"><a href="#欧拉公式证明" class="headerlink" title="欧拉公式证明"></a>欧拉公式证明</h2><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128154702016.png" alt="image-20220128154702016"></p>
+<hr>
+<h2 id="卷积的拉普拉斯变换"><a href="#卷积的拉普拉斯变换" class="headerlink" title="卷积的拉普拉斯变换"></a>卷积的拉普拉斯变换</h2><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128154518972.png" alt="image-20220128154518972" style="zoom:100%;"></p>
+<hr>
+<h2 id="Sinx-2-的证明"><a href="#Sinx-2-的证明" class="headerlink" title="Sinx = 2 的证明"></a>Sinx = 2 的证明</h2><p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128154552178.png" alt="image-20220128154552178"></p>
+<hr>
+<h2 id="复数的三种表示"><a href="#复数的三种表示" class="headerlink" title="复数的三种表示"></a>复数的三种表示</h2><h3 id="一般型"><a href="#一般型" class="headerlink" title="一般型"></a>一般型</h3><script type="math/tex; mode=display">
+z = a + bi</script><h3 id="三角型"><a href="#三角型" class="headerlink" title="三角型"></a>三角型</h3><script type="math/tex; mode=display">
+z = |z|cos(\theta) +|z|sin(\theta)i</script><h3 id="指数型"><a href="#指数型" class="headerlink" title="指数型"></a>指数型</h3><script type="math/tex; mode=display">
+z = |z|e^{i\theta}</script><h3 id="欧拉恒等式"><a href="#欧拉恒等式" class="headerlink" title="欧拉恒等式"></a>欧拉恒等式</h3><p>当$\theta = \pi$  ，$|z|=1$有：</p>
+<script type="math/tex; mode=display">
+e^{i\pi} + 1 = 0</script><h3 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h3><p>通过数形转换的方式，加深对这三种形式的理解</p>
+<hr>
+<h2 id="如何选取阈值"><a href="#如何选取阈值" class="headerlink" title="如何选取阈值"></a>如何选取阈值</h2><h3 id="Six-Sigma-选取原则"><a href="#Six-Sigma-选取原则" class="headerlink" title="Six Sigma 选取原则"></a>Six Sigma 选取原则</h3><p>工业生产中，对于产品的品质把控一般采用<strong>Six Sigma</strong>的原则。</p>
+<p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128153711471.png" alt="image-20220128153711471" style="zoom:67%;"></p>
+<h3 id="工程选择两种准则"><a href="#工程选择两种准则" class="headerlink" title="工程选择两种准则"></a>工程选择两种准则</h3><p>当合格与不合格的Six Sigma存在重叠部分，那么根据实际情况选择<strong>宁纵无枉</strong>还是<strong>宁枉无纵</strong></p>
+<p><img src="/2022/01/27/DR_CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220128153947372.png" alt="image-20220128153947372" style="zoom:67%;"></p>
+]]></content>
+      <tags>
+        <tag>DR_CAN</tag>
+        <tag>Theoretical Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DR_CAN课程学习——自动控制原理</title>
+    <url>/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>基于B站UP主<strong>DR_CAN</strong>视频所作总结笔记</p>
+<p>视频链接：<a href="https://space.bilibili.com/230105574/channel/seriesdetail?sid=1569593">DR_CAN——自动控制原理</a></p>
+</blockquote>
+<span id="more"></span>
+<h2 id="开环系统与闭环系统"><a href="#开环系统与闭环系统" class="headerlink" title="开环系统与闭环系统"></a>开环系统与闭环系统</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-2.jpg" alt="自动控制原理-2" style="zoom:80%;"></p>
+<h2 id="系统稳定性分析"><a href="#系统稳定性分析" class="headerlink" title="系统稳定性分析"></a>系统稳定性分析</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-3.jpg" alt="自动控制原理-3" style="zoom:80%;"></p>
+<h2 id="系统分析实例、比例控制器"><a href="#系统分析实例、比例控制器" class="headerlink" title="系统分析实例、比例控制器"></a>系统分析实例、比例控制器</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-4.jpg" alt="自动控制原理-4" style="zoom:80%;"></p>
+<h2 id="终值定理与稳态误差"><a href="#终值定理与稳态误差" class="headerlink" title="终值定理与稳态误差"></a>终值定理与稳态误差</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-5.jpg" alt="自动控制原理-5" style="zoom:80%;"></p>
+<h2 id="比例积分控制器"><a href="#比例积分控制器" class="headerlink" title="比例积分控制器"></a>比例积分控制器</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-6.jpg" alt="自动控制原理-6" style="zoom:80%;"></p>
+<h2 id="根轨迹"><a href="#根轨迹" class="headerlink" title="根轨迹"></a>根轨迹</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-7.jpg" alt="自动控制原理-7" style="zoom:80%;"></p>
+<h2 id="超前补偿器"><a href="#超前补偿器" class="headerlink" title="超前补偿器"></a>超前补偿器</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-8.jpg" alt="自动控制原理-8" style="zoom:80%;"></p>
+<h2 id="滞后补偿器"><a href="#滞后补偿器" class="headerlink" title="滞后补偿器"></a>滞后补偿器</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-9.jpg" alt="自动控制原理-9" style="zoom:80%;"></p>
+<h2 id="奈奎斯特稳定性判据"><a href="#奈奎斯特稳定性判据" class="headerlink" title="奈奎斯特稳定性判据"></a>奈奎斯特稳定性判据</h2><p><img src="/2022/01/31/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/自动控制原理-10.jpg" alt="自动控制原理-10" style="zoom:80%;"></p>
+]]></content>
+      <tags>
+        <tag>DR_CAN</tag>
+        <tag>Theoretical Learning</tag>
+        <tag>Principle of automatic control</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SLAM导航实战（一）：编程基础</title>
+    <url>/2022/01/29/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结，根据作者对本书的章节规划，预计共分为四个部分：</p>
+<ol>
+<li>编程基础篇</li>
+<li>硬件基础篇</li>
+<li>SLAM篇</li>
+<li>自主导航篇</li>
+</ol>
+<p>本系列笔记也将基于上述四个部分进行归纳总结</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>当前SLAM系统主要是在<strong>Linux</strong>系统进行开发的，其中应用最广的当属<strong>Ubuntu</strong>，掌握Linux系统的基本操作是进行SLAM开发的前提条件。除了操作系统外，进行SLAM学习还需要掌握一些其他的必要的基础技能，也是本章的主要内容——<strong>ROS操作系统、C++编程基础、OpenCV基础</strong>。本章将依次对其内容进行简要的总结梳理（主要是采集里面对于自己有用的知识点）。</p>
+<span id="more"></span>
+<p><em>（注：笔者本人粗略查看了书籍第一部分内容，认为对无基础小白并不友好，需要有一定基础才能更好地学习此书，为此每个部分笔者也简单梳理自己的学习资料）</em></p>
+<h2 id="ROS操作系统"><a href="#ROS操作系统" class="headerlink" title="ROS操作系统"></a>ROS操作系统</h2><h3 id="相关学习资料"><a href="#相关学习资料" class="headerlink" title="相关学习资料"></a>相关学习资料</h3><p>详细清晰，对小白友好：<a href="https://www.bilibili.com/video/BV1mJ411R7Ni?from=search&amp;seid=5450696048617681625&amp;spm_id_from=333.337.0.0">中科院ROS操作系统学习教程</a></p>
+<p>版本较新，含实战内容：<a href="http://www.autolabor.com.cn/book/ROSTutorials/">Autolabor Ros教程</a></p>
+<p>经典教程<del>（个人入门教程，但没太学明白）</del>：<a href="https://www.bilibili.com/video/BV1zt411G7Vn?from=search&amp;seid=5450696048617681625&amp;spm_id_from=333.337.0.0">古月居ROS 21讲</a></p>
+<h3 id="ROS简介"><a href="#ROS简介" class="headerlink" title="ROS简介"></a>ROS简介</h3><p>ROS是<strong>分布式的通信框架</strong>，帮助各个进程之间更方便地进行通信，其开发初衷就是<strong>避免重复造轮子</strong>。</p>
+<p><strong>常用官方学习网站：</strong></p>
+<ul>
+<li>官网：www.ros.org</li>
+<li>Wiki：www.wiki.ros.org</li>
+<li>问答：www.answers.ros.org</li>
+</ul>
+<h3 id="ROS开发环境"><a href="#ROS开发环境" class="headerlink" title="ROS开发环境"></a>ROS开发环境</h3><p><strong>文件组织方式：</strong>系统空间（/opt/ros）、工作空间</p>
+<p><strong>网络通信配置：</strong>分布式开发过程中需要配置<strong>MASTER、HOST</strong>（实战部分再做解释）</p>
+<h3 id="ROS框架"><a href="#ROS框架" class="headerlink" title="ROS框架"></a>ROS框架</h3><p> <strong>计算图角度：</strong>节点、话题、服务、动作等</p>
+<p><strong>文件系统角度：</strong>源文件空间、编译空间、开发空间</p>
+<p><strong>消息机制：</strong>话题、服务、动作</p>
+<p><strong>个人理解</strong>：系统各个工作单元在ROS框架下为节点，他们通过各种消息机制获取、发送各类数据、信息，从而使各个部分正常工作形成完整的系统。</p>
+<h3 id="ROS节点通信"><a href="#ROS节点通信" class="headerlink" title="ROS节点通信"></a>ROS节点通信</h3><p><strong>话题：</strong>单向异步</p>
+<p><strong>服务：</strong>双向同步</p>
+<p><strong>动作：</strong>双向异步</p>
+<p><strong>服务、动作</strong>均不用构建节点之间的连接。</p>
+<h4 id="话题通信"><a href="#话题通信" class="headerlink" title="话题通信"></a>话题通信</h4><p>发布者</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;std_msgs/String.h&quot;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;publish_node&quot;</span>);</span><br><span class="line">  ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">  ros::Publisher chatter_pub = nh.advertise&lt;std_msgs::String&gt;(<span class="string">&quot;chatter&quot;</span>, <span class="number">1000</span>);</span><br><span class="line">  <span class="function">ros::Rate <span class="title">loop_rate</span><span class="params">(<span class="number">10</span>)</span></span>;<span class="comment">//自循环的频率需要配合27行的sleep()方法使用</span></span><br><span class="line">  <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (ros::<span class="built_in">ok</span>()) </span><br><span class="line">  &#123;</span><br><span class="line">    std_msgs::String msg;</span><br><span class="line"></span><br><span class="line">    std::stringstream ss; </span><br><span class="line">    ss &lt;&lt; <span class="string">&quot;hello &quot;</span> &lt;&lt; count; </span><br><span class="line">    msg.data = ss.<span class="built_in">str</span>();</span><br><span class="line">    <span class="built_in">ROS_INFO</span>(<span class="string">&quot;%s&quot;</span>, msg.data.<span class="built_in">c_str</span>());</span><br><span class="line">  </span><br><span class="line">    chatter_pub.<span class="built_in">publish</span>(msg);</span><br><span class="line">  </span><br><span class="line">    ros::<span class="built_in">spinOnce</span>();<span class="comment">//让回调函数有机会被执行的声明</span></span><br><span class="line">    loop_rate.<span class="built_in">sleep</span>();</span><br><span class="line">    ++count;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>订阅者</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ros/ros.h&quot;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;std_msgs/String.h&quot;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">chatterCallback</span><span class="params">(<span class="keyword">const</span> std_msgs::String::ConstPtr&amp; msg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">ROS_INFO</span>(<span class="string">&quot;I heard: [%s]&quot;</span>,msg-&gt;data.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;subscribe_node&quot;</span>);</span><br><span class="line">  ros::NodeHandle nh;</span><br><span class="line"></span><br><span class="line">  ros::Subscriber chatter_sub = nh.<span class="built_in">subscribe</span>(<span class="string">&quot;chatter&quot;</span>, <span class="number">1000</span>,chatterCallback);</span><br><span class="line"></span><br><span class="line">  ros::<span class="built_in">spin</span>();<span class="comment">//让程序进入自循环的挂起状态</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="服务通信"><a href="#服务通信" class="headerlink" title="服务通信"></a>服务通信</h4><p><strong>自定义服务基本步骤：</strong></p>
+<ol>
+<li>创建srv文件夹，创建 <strong>.srv</strong> 格式文件，编写消息类型</li>
+<li>功能包CMakeLists.txt文件中<strong>find_package</strong>中添加<strong>std_msgs、message_generation</strong>依赖项</li>
+<li>解注释<strong>add_service_files</strong> 添加第一步编写的srv文件</li>
+<li>解注释<strong>generate_messages</strong> 添加<strong>std_msgs</strong>，其作用是自动创建消息类型的<strong>.h</strong>头文件</li>
+<li><strong>package.xml</strong>中添加<strong>message_generation、message_runtime</strong>依赖</li>
+</ol>
+<p><strong>编译运行注意：</strong>由于自定义了服务消息类型，需在<strong>add_dependencies</strong>中配置<strong>自定义功能包命_gencpp</strong>，若为python则<strong>_genpy</strong></p>
+<h4 id="动作通信"><a href="#动作通信" class="headerlink" title="动作通信"></a>动作通信</h4><p><strong>基本步骤：</strong> <strong>find_package</strong>中需添加<strong>Boost库</strong>，其余参照服务通信配置方法</p>
+<h3 id="ROS其他重要概念"><a href="#ROS其他重要概念" class="headerlink" title="ROS其他重要概念"></a>ROS其他重要概念</h3><p><strong>parameter：</strong> getParam()、setParam()</p>
+<p><strong>tf：</strong> 右手坐标系；由<strong>广播tf变换和监听tf变换</strong>组成节点</p>
+<p><strong>nodelet：</strong>该节点可以在单个进程下以多个线程形式运行</p>
+<hr>
+<h2 id="C-编程规范"><a href="#C-编程规范" class="headerlink" title="C++编程规范"></a>C++编程规范</h2><h3 id="相关学习资料-1"><a href="#相关学习资料-1" class="headerlink" title="相关学习资料"></a>相关学习资料</h3><p>书籍：CMake Practice</p>
+<h3 id="编译方式及规范"><a href="#编译方式及规范" class="headerlink" title="编译方式及规范"></a>编译方式及规范</h3><p><strong>编译方式：</strong></p>
+<ol>
+<li>g++</li>
+<li>Make</li>
+<li>CMake</li>
+</ol>
+<p><strong>编程规范：</strong></p>
+<p><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/">谷歌C++编程风格指南</a></p>
+<hr>
+<h2 id="OpenCV图像处理"><a href="#OpenCV图像处理" class="headerlink" title="OpenCV图像处理"></a>OpenCV图像处理</h2><h3 id="相关学习资料-2"><a href="#相关学习资料-2" class="headerlink" title="相关学习资料"></a>相关学习资料</h3><p>入门书籍：<a href="http://product.dangdang.com/11058134396.html">OpenCV3编程入门</a></p>
+<p>经典书籍（中文翻译版也可以）：<a href="http://product.dangdang.com/27693398.html">Learning Opencv: Computer Vision with the Opencv Library</a></p>
+<h3 id="图像数据"><a href="#图像数据" class="headerlink" title="图像数据"></a>图像数据</h3><p><strong>Mat类组成：</strong>矩阵头——存放矩阵尺寸、存储方式、存储地址等信息；矩阵指针——指向内存区域</p>
+<p><strong>默认图片存储顺序：</strong>BGR</p>
+<h3 id="图像滤波"><a href="#图像滤波" class="headerlink" title="图像滤波"></a>图像滤波</h3><h4 id="线性滤波"><a href="#线性滤波" class="headerlink" title="线性滤波"></a>线性滤波</h4><ul>
+<li>均值滤波（blur）</li>
+<li>高斯滤波（GaussianBlur）</li>
+</ul>
+<h4 id="非线性滤波"><a href="#非线性滤波" class="headerlink" title="非线性滤波"></a>非线性滤波</h4><ul>
+<li>中值滤波（medianBlur）</li>
+<li>双边滤波（bilateralFilter）：与空间位置、像素值相似度有关，能保留细节信息</li>
+</ul>
+<h4 id="形态学滤波"><a href="#形态学滤波" class="headerlink" title="形态学滤波"></a>形态学滤波</h4><ul>
+<li>膨胀（dilate）</li>
+<li>腐蚀（erode）</li>
+</ul>
+<p>不同组合形成新的滤波算法</p>
+<ul>
+<li>开运算（open）</li>
+<li>闭运算（close）</li>
+<li>形态学梯度（morphgrad）</li>
+<li>顶帽运算（tophat）</li>
+<li>黑帽运算（blackhat）</li>
+</ul>
+<h3 id="图像变换"><a href="#图像变换" class="headerlink" title="图像变换"></a>图像变换</h3><h4 id="射影变换"><a href="#射影变换" class="headerlink" title="射影变换"></a>射影变换</h4><ul>
+<li>欧氏变换</li>
+<li>相似变换</li>
+<li>仿射变换</li>
+<li>射影变换（上述三种变换均为射影变换的特例）</li>
+</ul>
+<h4 id="霍夫变换"><a href="#霍夫变换" class="headerlink" title="霍夫变换"></a>霍夫变换</h4><p><strong>检测直线</strong>的一种常用方法</p>
+<p><strong>基本原理：</strong>过某一点存在<strong>直线簇</strong>，其对应参数$r、\theta$ 可以绘制一条正弦曲线，若多个点绘制的正弦曲线为同一条曲线，则三点位于同一条直线上</p>
+<p><strong>封装函数：</strong>HoughLines、HoughLinesP（累计概率霍夫变换，具有更高的执行效率）</p>
+<h4 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h4><p><strong>sobel算法：</strong> x、y方向的卷积核对图像卷积，得到两个方向的梯度后合成为某点的近似梯度</p>
+<p><strong>canny算法：</strong> 在sobel基础上先用高斯滤波去除噪声，然后sobel算法，最后采用滞后阈值讲边缘提取出来</p>
+<h4 id="直方图均衡"><a href="#直方图均衡" class="headerlink" title="直方图均衡"></a>直方图均衡</h4><p><strong>图像直方图：</strong>横坐标为亮度值，纵坐标为每个亮度值对应的像素总数量</p>
+<h3 id="图像特征点提取"><a href="#图像特征点提取" class="headerlink" title="图像特征点提取"></a>图像特征点提取</h3><h4 id="SIFT特征点"><a href="#SIFT特征点" class="headerlink" title="SIFT特征点"></a>SIFT特征点</h4><p><strong>尺度空间：</strong>模拟人眼<strong>远近观察</strong>的成像特点，可图区图像中<strong>尺度不变性</strong>的特征</p>
+<ul>
+<li>图像金字塔</li>
+<li>高斯金字塔</li>
+<li>高斯差分金字塔（由于<strong>尺度归一化高斯拉普拉斯函数</strong>与<strong>高斯差分函数</strong>非常近似，且差分计算量少）</li>
+</ul>
+<p><strong>特征点定位：</strong>在<strong>高斯差分金字塔</strong>中完成，<strong>DoG空间进行</strong></p>
+<ul>
+<li>极值点检测</li>
+<li>特征点定位</li>
+<li>特征点筛选</li>
+</ul>
+<p><strong>特征点方向提取：</strong>在<strong>高斯金字塔</strong>中完成</p>
+<ul>
+<li>特征点主方向</li>
+<li>特征点邻域方向</li>
+<li>特征点描述子<strong>（4 x 4 x 8 = 128维向量描述）</strong></li>
+</ul>
+<h4 id="SURF特征点"><a href="#SURF特征点" class="headerlink" title="SURF特征点"></a>SURF特征点</h4><p><strong>尺度空间：</strong>在SIFT基础上讲高斯滤波用<strong>Hessian矩阵的盒式滤波</strong>代替，大幅降低运算耗时；尺度不同问题由盒式滤波窗口尺寸解决</p>
+<p><strong>特征点定位：</strong> <strong>Hessian矩阵</strong>的决定值中进行</p>
+<p><strong>特征点方向提取：</strong> <strong>Haar小波</strong>特征得到，最终<strong>（4 x 4 x 4 = 64维向量描述）</strong></p>
+<h4 id="ORB特征点"><a href="#ORB特征点" class="headerlink" title="ORB特征点"></a>ORB特征点</h4><p><strong>尺度空间：</strong>直接<strong>图像金字塔</strong>拼接成大图</p>
+<p><strong>特征点提取：</strong> <strong>FAST特征</strong>提取，结合<strong>灰度质心</strong>得到特征点方向的<strong>oFAST</strong>特征</p>
+<p><strong>特征点描述：</strong> 先对图像进行高斯滤波后，采用<strong>BRIEF</strong>描述计算，最后将<strong>BRIEF</strong>中按照高斯分布对特征点方向进行旋转，得到<strong>rBRIEF</strong></p>
+<p>​                    </p>
+]]></content>
+      <tags>
+        <tag>SLAM</tag>
+        <tag>ROS</tag>
+        <tag>C++</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SLAM导航实战（二）：硬件基础</title>
+    <url>/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结。</p>
+<p>由于笔者本身不是从事硬件开发设计，故对其中部分硬件设计只做简要概括</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本篇作者从<strong>机器人传感器、机器人主机、机器人底盘</strong>对SLAM系统中<strong>硬件部分</strong>做了简要介绍，通过了解具体硬件的基本原理，能更好地去体会上层代码的设计思路，同时也为系统实际落地提供了思路。</p>
+<span id="more"></span>
+<h2 id="机器人传感器"><a href="#机器人传感器" class="headerlink" title="机器人传感器"></a>机器人传感器</h2><h3 id="惯性测量单元"><a href="#惯性测量单元" class="headerlink" title="惯性测量单元"></a>惯性测量单元</h3><h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p>测量方式通常为<strong>机械方式、光学方式、微机电方式</strong>。</p>
+<p><strong>加速度测量</strong>通常采用<strong>MEMS</strong>；利用<strong>高速旋转陀螺具有定轴性</strong>测量<strong>角速度</strong>，<strong>激光陀螺仪</strong>利用<strong>萨格奈克效应</strong>进行角速度测量；<strong>地磁</strong>通常采用<strong>霍尔效应</strong>进行测量。</p>
+<h4 id="原始数据采集"><a href="#原始数据采集" class="headerlink" title="原始数据采集"></a>原始数据采集</h4><ul>
+<li>硬件电路搭建</li>
+<li>固件驱动开发</li>
+<li>上位机ROS驱动程序（<strong>发布ROS /imu话题</strong>）</li>
+</ul>
+<h4 id="参数标定"><a href="#参数标定" class="headerlink" title="参数标定"></a>参数标定</h4><p><strong>检测指标：</strong></p>
+<ol>
+<li>重复上电零偏影响</li>
+<li>温度对零偏影响</li>
+<li>震动对零偏影响</li>
+<li>高冲击容忍度</li>
+<li>非线性度</li>
+</ol>
+<p><strong>内参标定：</strong></p>
+<p>​    三计标定通常为<strong>轴偏差项、尺度偏差项、零偏差项</strong>对系统进行标定修正</p>
+<p><strong>标定模型改进：</strong></p>
+<p>​    除了三计自身，还包括外部因素来影响其标定效果，<strong>温度、重力、轴间敏感度、Allan方差</strong></p>
+<h4 id="数据滤波"><a href="#数据滤波" class="headerlink" title="数据滤波"></a>数据滤波</h4><p>​    常见数据滤波：<strong>均值、滑动（解决均值输出延迟）、滑动中值滤波（剔除影响平均值的数据）、RC低通、FIR、IIR</strong></p>
+<h4 id="姿态融合"><a href="#姿态融合" class="headerlink" title="姿态融合"></a>姿态融合</h4><p>​    主要涉及两个滤波算法：<strong>卡尔曼滤波、互补滤波</strong> <em>（注：后续专门总结一下这部分）</em></p>
+<h3 id="激光雷达"><a href="#激光雷达" class="headerlink" title="激光雷达"></a>激光雷达</h3><h4 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h4><p><strong>测距原理：</strong> 三角测距（<strong>厘米级</strong>）、TOF（<strong>毫米级</strong>）</p>
+<p><strong>扫描原理：</strong> 单线、多线、固态、单线多自由度、面激光</p>
+<h4 id="性能参数"><a href="#性能参数" class="headerlink" title="性能参数"></a>性能参数</h4><ul>
+<li><p>激光线数</p>
+</li>
+<li><p>测距频率</p>
+</li>
+<li><p>扫描频率</p>
+</li>
+<li><p>测距量程</p>
+</li>
+<li><p>扫描角度</p>
+</li>
+<li><p>距离分辨率</p>
+</li>
+<li><p>角度分辨率</p>
+<script type="math/tex; mode=display">
+角度分辨率={扫描频率\times360° \over 测距频率}</script></li>
+<li><p>使用寿命</p>
+</li>
+</ul>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p><strong>上位机ROS驱动程序：</strong> 发布<strong>ROS /scan</strong>话题，标准数据格式<strong>LaerScan（单线）、MultiEchoLaserScan、PointCloud2（多线）</strong></p>
+<p><strong>扫描点的时间同步：</strong> 纯估计法（<strong>主要涉及ICP、VICP</strong>）；里程计辅助法（通常里程计数据需要<strong>线性插值以便与雷达数据对齐</strong>）</p>
+<h3 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h3><h4 id="单目相机"><a href="#单目相机" class="headerlink" title="单目相机"></a>单目相机</h4><p><strong>无畸变内参模型：</strong>K为相机内参</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+U  \\
+V  \\
+1  
+\end{pmatrix}
+
+= {1 \over Z}
+\begin{pmatrix}
+f_x & 0 & c_x  \\
+0 & f_y & c_y \\
+0 & 0 &  1  
+\end{pmatrix}
+\begin{pmatrix}
+X  \\
+Y  \\
+1  
+\end{pmatrix}
+
+= {1 \over Z}KP</script><p><strong>径向畸变：</strong> 距离像素中心 $r$ 做三件泰勒近似</p>
+<p><strong>外参模型：</strong>T为相机在世界坐标系下的外参</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+U \\
+V \\
+1
+\end{bmatrix}
+=\frac{1}{Z}KP^c=\frac{1}{Z}K(RP^W + t) = \frac{1}{Z}kTP^W</script><p><strong>上位机ROS驱动程序：</strong> 通常将数据发布<strong>ROS /<cam_name>/image_raw</cam_name></strong>话题中，系统自带<strong>cheese</strong>可作为查看工具一般有三种驱动方式：</p>
+<ul>
+<li>usb_cam</li>
+<li>gscam（仅raw数据）</li>
+<li>借助opencv自制驱动</li>
+</ul>
+<p><strong>相机标定：</strong> 查看ROS功能包<strong>camera_calibration</strong></p>
+<h4 id="双目相机"><a href="#双目相机" class="headerlink" title="双目相机"></a>双目相机</h4><p><strong>深度信息获取原理：</strong></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220201230240978.png" alt="image-20220201230240978" style="zoom:80%;"></p>
+<script type="math/tex; mode=display">
+\frac{Z-f}{Z} = \frac{b - U_L + U_R}{b}</script><p>简化结果：</p>
+<script type="math/tex; mode=display">
+Z = \frac{f\times b}{U_L - U_R}</script><p>工艺原因，通常两个相机不能保持<strong>绝对平行</strong></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220201230518331.png" alt="image-20220201230518331" style="zoom:80%;"></p>
+<p>此时相机成像模型</p>
+<script type="math/tex; mode=display">
+s_LP_L=K_LP</script><script type="math/tex; mode=display">
+s_RP_R = K_R(RP+t)</script><p><strong>对极几何约束：</strong>P点不在两者射线时，估计P在射线$C1P、C2P$ 的公垂线的中点</p>
+<h4 id="RGB-D相机"><a href="#RGB-D相机" class="headerlink" title="RGB-D相机"></a>RGB-D相机</h4><p><strong>测距原理：</strong>三角测距、TOF</p>
+<h3 id="带编码器的减速电机"><a href="#带编码器的减速电机" class="headerlink" title="带编码器的减速电机"></a>带编码器的减速电机</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><p><strong>行星减速箱：</strong>相同减速比体积更小</p>
+<p><strong>编码器：</strong>霍尔、光电、碳刷</p>
+<h4 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h4><p><strong>rosserial</strong>是专门开发与外部数据串口通信的功能包</p>
+<p>整体控制系统图如下：</p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220201231721665.png" alt="image-20220201231721665" style="zoom:67%;"></p>
+<p>通常通过<strong>/odom、/cmd_vel</strong>两个话题分别发布里程计数据以及，速度控制信息。</p>
+<hr>
+<h2 id="机器人主机"><a href="#机器人主机" class="headerlink" title="机器人主机"></a>机器人主机</h2><h3 id="树莓派"><a href="#树莓派" class="headerlink" title="树莓派"></a>树莓派</h3><p>建议安装<strong>Ubuntu MATE</strong>，同时给定<strong>SWAP空间</strong>充当运行内存</p>
+<h3 id="实用设置"><a href="#实用设置" class="headerlink" title="实用设置"></a>实用设置</h3><h4 id="永久开启ssh"><a href="#永久开启ssh" class="headerlink" title="永久开启ssh"></a>永久开启ssh</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable ssh</span><br></pre></td></tr></table></figure>
+<h4 id="USB外设绑定"><a href="#USB外设绑定" class="headerlink" title="USB外设绑定"></a>USB外设绑定</h4><p>创建绑定<strong>rules文件</strong>前的序号越大代表优先级越低，一般将优先级设定小一定，创建文件<strong>/etc/udev/rules.d/99-appz99-usb-serial.rules</strong></p>
+<figure class="highlight cc"><table><tr><td class="code"><pre><span class="line"># appz99</span><br><span class="line">KERNELS==<span class="string">&quot;1_1.3&quot;</span>,ATTRS&#123;idProduct&#125;==<span class="string">&quot;7523&quot;</span>,ATTRS&#123;idVendor&#125;==<span class="string">&quot;LA86&quot;</span>,symlink+=<span class="string">&quot;appz99&quot;</span>,MODE=<span class="string">&quot;0777&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># lidar</span></span><br><span class="line">KERNELS==<span class="string">&quot;1_1.4&quot;</span>,ATTRS&#123;idProduct&#125;==<span class="string">&quot;ea60&quot;</span>,ATTRS&#123;idVendor&#125;==<span class="string">&quot;10c4&quot;</span>,symlink+=<span class="string">&quot;lidar&quot;</span>,MODE=<span class="string">&quot;0777&quot;</span></span><br></pre></td></tr></table></figure>
+<p><em>(上面代码中<strong>1_1.3</strong>为**1-1.3，1.4同理)</em></p>
+<p><strong>KERNELS、idProduct、idVendor</strong>可以唯一确定设别</p>
+<p>插入新设备用如下指令查看对应<strong>KERNELS、idProduct、idVendor</strong></p>
+<figure class="highlight cc"><table><tr><td class="code"><pre><span class="line">udevadm info -a -p $(udevadm info -q path -n &lt;devpath&gt;)</span><br></pre></td></tr></table></figure>
+<p><em>（注：<devpath>替换成新插入的设备号）</devpath></em></p>
+<p>查看是否绑定成功</p>
+<figure class="highlight cc"><table><tr><td class="code"><pre><span class="line">ll /dev |grep ttyUSB</span><br></pre></td></tr></table></figure>
+<p><em>（注：此处ttyUSB为事例）</em></p>
+<h4 id="ROS节点开机自启动"><a href="#ROS节点开机自启动" class="headerlink" title="ROS节点开机自启动"></a>ROS节点开机自启动</h4><figure class="highlight cc"><table><tr><td class="code"><pre><span class="line">sudo apt install ros-melodic-robot-upstart</span><br><span class="line">rosddep install robot_upstart</span><br><span class="line"></span><br><span class="line"># 将需要自启动的文件节点写入demo1的launch文件中，并用如下指令进行装载</span><br><span class="line">roscore</span><br><span class="line">rosrun robot_upstart install example/launch/demo1.launch --job myrobot --logdir ~/.ros/myrobot.log</span><br><span class="line"></span><br><span class="line"># 启动任务</span><br><span class="line">sudo systemctl daemon-reload &amp;&amp; sudo systemctl start myrobot</span><br><span class="line"># 重启任务</span><br><span class="line">sudo systemctl restart myrobot</span><br><span class="line">#停止任务</span><br><span class="line">sudo systemctl stop myrobot</span><br><span class="line"></span><br><span class="line"># 删除启动任务</span><br><span class="line">roscore</span><br><span class="line">rosrun robot_upstart uninstall myrobot</span><br></pre></td></tr></table></figure>
+<p><em>（注：myrobot为自启动任务的别名）</em></p>
+<h3 id="分布式通信"><a href="#分布式通信" class="headerlink" title="分布式通信"></a>分布式通信</h3><p>需要在网络下指定<strong>唯一MASTER</strong></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220201234503065.png" alt="image-20220201234503065" style="zoom:67%;"></p>
+<p><strong>ssh本质：</strong>命令传递，所以启动不了机器人本地rviz</p>
+<hr>
+<h2 id="机器人底盘"><a href="#机器人底盘" class="headerlink" title="机器人底盘"></a>机器人底盘</h2><h3 id="底盘运动学模型"><a href="#底盘运动学模型" class="headerlink" title="底盘运动学模型"></a>底盘运动学模型</h3><h4 id="两轮差速模型"><a href="#两轮差速模型" class="headerlink" title="两轮差速模型"></a>两轮差速模型</h4><p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202103139678.png" alt="image-20220202103139678" style="zoom:67%;"></p>
+<p><strong>前向运动学：</strong> 根据上图建模可得</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+v_x \\
+\omega_z 
+\end{bmatrix}
+=\begin{bmatrix}
+1/2 & 1/2\\
+-1/d  & 1/d
+\end{bmatrix}
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}</script><p><strong>逆向运动学：</strong> 正向运动学求逆即可</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & -d/2\\
+1  & d/2
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+\omega_z 
+\end{bmatrix}</script><p><strong>轨迹推演：</strong>两轮差速不发生侧向滑动 $v_y = 0$</p>
+<script type="math/tex; mode=display">
+\dot{P} = \begin{bmatrix}
+\dot{X}  \\
+\dot{Y}  \\
+\dot{\theta } 
+\end{bmatrix}
+=\begin{bmatrix}
+\cos \theta   & - \sin \theta & 0\\
+\sin \theta   & \cos \theta  & 0\\
+0  & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+v_y \\
+\omega_z
+\end{bmatrix}</script><h4 id="四轮差速模型"><a href="#四轮差速模型" class="headerlink" title="四轮差速模型"></a>四轮差速模型</h4><p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202104435259.png" alt="image-20220202104435259" style="zoom:67%;"></p>
+<p><strong>前向运动学：</strong> 根据上图建模可得</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+v_{cx} \\
+\omega_c 
+\end{bmatrix}
+=\begin{bmatrix}
+1/2 & 1/2\\
+-1/c  & 1/c
+\end{bmatrix}
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}</script><p><strong>逆向运动学：</strong> 正向运动学求逆即可</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & -c/2\\
+1  & c/2
+\end{bmatrix}
+\begin{bmatrix}
+v_{cx} \\
+\omega_c 
+\end{bmatrix}</script><p><strong>航迹推演：</strong> <strong>不能存在太严重的侧向滑动</strong>是上式成立的前提条件，若考虑侧向滑动，以<strong>COM建立右手坐标系</strong>，ICR的位置以$(x_{ICR}, y_{ICR})$表示，则有</p>
+<script type="math/tex; mode=display">
+v_{cy}-\omega_cd_{cx}=0 \\
+v_cy+\omega_cx_{ICR}=0</script><p>侧向滑动速度与$x_{ICR}$ 有关</p>
+<p><strong>自转顺滑问题：</strong> 游中国比赛中关于四轮模型一直卡顿问题的解释</p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202105246098.png" alt="image-20220202105246098" style="zoom:67%;"></p>
+<p>如何让四轮模型顺滑自转？</p>
+<p>本质上四轮模型是可以等效为两轮差速模型<em>（两轮差速可以很好地实现自转）</em>，上下两对轮子各自的<strong>瞬心</strong>如果无限接近，那么四轮模型就逼近两轮模型，那么车体侧向滑动就更小，本身自转也就更加顺滑。</p>
+<h4 id="阿克曼模型"><a href="#阿克曼模型" class="headerlink" title="阿克曼模型"></a>阿克曼模型</h4><p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202105945273.png" alt="image-20220202105945273" style="zoom:67%;"></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202110237077.png" alt="image-20220202110237077" style="zoom:67%;"></p>
+<p><strong>梯形四连杆：</strong>如上图a）所示，四连杆构成的<strong>等腰梯形</strong>是<strong>等腰三角型ABE</strong>的一部分</p>
+<p><strong>转向角设计：</strong> 过弯速度要求越高，则<strong>外轮转向角</strong>要越大<em>（注：圆周运动）</em></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202110604060.png" alt="image-20220202110604060" style="zoom:67%;"></p>
+<p><strong>前向运动学：</strong> 根据上图建模可得</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+v_{back} \\
+\omega_{back} 
+\end{bmatrix}
+=\begin{bmatrix}
+1/2 & 1/2\\
+-1/d  & 1/d
+\end{bmatrix}
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}</script><p><strong>逆向运动学：</strong> 正向运动学求逆即可</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+V_L \\
+V_R
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & -d/2\\
+1  & d/2
+\end{bmatrix}
+\begin{bmatrix}
+v_{back} \\
+\omega_{back} 
+\end{bmatrix}</script><p>中轴平均转向角</p>
+<script type="math/tex; mode=display">
+\tan \delta =\frac{l}{R} \\
+R = \frac{v_{back}}{\omega_{back} } \\
+\delta = \tan^{-1} (\frac{l \cdot \omega_{back} }{v_{back}} )</script><p><strong>轨迹推演：</strong>无法原地自转，只能弧线逼近，<a href="https://wiki.ros.org/Ackermann%20Group">ROS阿克曼社区</a></p>
+<h4 id="全向模型"><a href="#全向模型" class="headerlink" title="全向模型"></a>全向模型</h4><p><strong>各个模型的约束条件</strong></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202111507989.png" alt="image-20220202111507989" style="zoom:67%;"></p>
+<p><strong>麦轮的限制</strong></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202111634278.png" alt="image-20220202111634278" style="zoom:67%;"></p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202111646913.png" alt="image-20220202111646913" style="zoom:67%;"></p>
+<ul>
+<li>45°存在缝隙，运动过程车体会震动</li>
+<li>双90°行走落地点成锯齿状</li>
+<li>但90°目前最好的麦轮</li>
+</ul>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202123806872.png" alt="image-20220202123806872" style="zoom:67%;"></p>
+<p><strong>前向运动学：</strong> 根据上图建模可得</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+v_x \\
+v_y \\
+w
+\end{bmatrix}
+=\frac{1}{4} \begin{bmatrix}
+1  & 1 & 1 & 1 \\
+-1  & 1 & 1 & -1\\
+-\frac{1}{a+b}   & \frac{1}{a+b} & -\frac{1}{a+b} & \frac{1}{a+b}\\
+\end{bmatrix}
+\begin{bmatrix}
+V_1 \\
+V_2 \\
+V_3 \\
+V_4
+\end{bmatrix}</script><p><strong>逆向运动学：</strong>正向运动学求逆即可</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+V_1 \\
+V_2 \\
+V_3 \\
+V_4
+\end{bmatrix}
+=\begin{bmatrix}
+1  & -1 & -(a+b)\\
+ 1 & 1 & (a+b)\\
+ 1 & 1 & -(a+b)\\
+ 1 & -1 & (a+b)
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+v_y \\
+w
+\end{bmatrix}</script><p><strong>航迹推演：</strong> 任意方向都可运动</p>
+<script type="math/tex; mode=display">
+\dot{P} = \begin{bmatrix}
+\dot{X}  \\
+\dot{Y}  \\
+\dot{\theta } 
+\end{bmatrix}
+=\begin{bmatrix}
+\cos \theta   & - \sin \theta & 0\\
+\sin \theta   & \cos \theta  & 0\\
+0  & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+v_y \\
+\omega_z
+\end{bmatrix}</script><h4 id="其他模型"><a href="#其他模型" class="headerlink" title="其他模型"></a>其他模型</h4><ul>
+<li>双足</li>
+<li>四足</li>
+<li>多足</li>
+</ul>
+<h3 id="底盘性能指标"><a href="#底盘性能指标" class="headerlink" title="底盘性能指标"></a>底盘性能指标</h3><ul>
+<li>载重能力</li>
+<li>动力性能</li>
+</ul>
+<script type="math/tex; mode=display">
+\Gamma = \frac{P}{w}=\frac{1000\dot{P} }{2\pi \frac{\dot{n} }{60} }  \\
+F = \frac{\Gamma \cdot k}{R} \\
+V = 2 \pi R\frac{\dot{n} }{k}</script><p>动力$F$ 与减速箱的参数 $k$ 成正比、与轮子半径 $R$ 成反比，轮子线速度$v$ 与减速箱参数 $k$ 成反比、与轮子半径$R$ 成正比。</p>
+<p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202125053879.png" alt="image-20220202125053879" style="zoom:67%;"></p>
+<ul>
+<li>控制精度</li>
+<li>里程计精度</li>
+</ul>
+<h3 id="机器人底盘搭建"><a href="#机器人底盘搭建" class="headerlink" title="机器人底盘搭建"></a>机器人底盘搭建</h3><ol>
+<li>底盘运动学模型选择</li>
+<li>传感器选择</li>
+<li>主机选择</li>
+<li>底盘硬件系统搭建</li>
+<li>底盘软件系统搭建</li>
+</ol>
+<h3 id="SLAM导航关系图"><a href="#SLAM导航关系图" class="headerlink" title="SLAM导航关系图"></a>SLAM导航关系图</h3><p><img src="/2022/02/01/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/image-20220202125307851.png" alt="image-20220202125307851" style="zoom:67%;"></p>
+]]></content>
+      <tags>
+        <tag>SLAM</tag>
+        <tag>Sensor</tag>
+        <tag>Host System</tag>
+        <tag>Robot Chassis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SLAM经典综述学习</title>
+    <url>/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="SLAM方面经典综述"><a href="#SLAM方面经典综述" class="headerlink" title="SLAM方面经典综述"></a>SLAM方面经典综述</h1><blockquote>
+<p><strong>前言：</strong></p>
+<p>近期稍有时间，简单过了一遍2016年之前的SLAM方面的经典综述，第一次阅读外文文献，困难颇多，现打算精度一遍，做好相应笔记、总结。</p>
+<p>本次整理共计四篇综述如下：</p>
+<ol>
+<li>Simultaneous localization and mapping(SLAM)-Part I The Essential Algorithms</li>
+<li>2006_Simultaneous Localization and Mapping (SLAM)-Part II State of the Art</li>
+<li>基于单目视觉的同时定位与地图构建方法综述</li>
+<li>Past, Present, and Future of Simultaneous Localization and Mapping- Toward the Robust-Perception Age</li>
+</ol>
+<p>阅读顺序也是如上顺序，但鉴于当前SLAM方面的后端优化主要采用<strong>图优化</strong>的方式，故本次先总结2016年发表的两篇，后面在对2006年滤波方法两篇做总结<del>（推导太多看不懂）</del></p>
+</blockquote>
+<hr>
+<span id="more"></span>
+<h2 id="基于单目视觉的同时定位与地图构建方法综述"><a href="#基于单目视觉的同时定位与地图构建方法综述" class="headerlink" title="基于单目视觉的同时定位与地图构建方法综述"></a>基于单目视觉的同时定位与地图构建方法综述</h2><h3 id="一、写作目的"><a href="#一、写作目的" class="headerlink" title="一、写作目的"></a>一、写作目的</h3><p>室内导航定位的需求以及计算机视觉方面的变革促进出SLAM（simultaneous localization and  mapping）的进一步发展，尤其是低成本的视觉SLAM（V-SLAM）方面更是如此，但在2016年前的综述文献均偏向基于<strong>滤波</strong>的SLAM技术，不能反映如今SLAM技术发展潮流，故针对单目V-SLAM方法进行介绍，同时对V-SLAM最新的研究热点和发展趋势进行总结和展望。</p>
+<h3 id="二、V-SLAM基本原理"><a href="#二、V-SLAM基本原理" class="headerlink" title="二、V-SLAM基本原理"></a>二、V-SLAM基本原理</h3><p>通过<strong>多视图几何原理</strong>将三维空间中的三维点变换至相机运动的<strong>运动局部坐标系</strong>中，通过变换后的投影点与图像点进行<strong>最优匹配（最小二乘）</strong>来得到最优的空间三维点和相机运动。</p>
+<p>求解最优目标方程的过程也称为<strong>集束调整（BA）</strong>，对其求解通常可利用其系数结构进行高效求解。<em>（注：该部分可参考《机器人感知-因子图在SLAM中的应用》一书，后面再做这本书的学习总结）</em></p>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127114803347.png" alt="image-20220127114803347" style="zoom:80%;"></p>
+<p>​    由于单一视觉对于运动的局限性，所以引入了<strong>IMU</strong>来准确反馈相机的运动，成为了一种新的SLAM——VI-SLAM。</p>
+<p>VI-SLAM在V-SLAM的基础上，引入了一个新的运动方程，使得待优化的目标函数从原来的：</p>
+<script type="math/tex; mode=display">
+\underset{C_1\cdots C_m,X_1\cdots X_n}{\mathrm{argmin}} \sum_{i=1}^m \sum_{j=1}^n\|h(C_i,X_j)-\hat x_{ij}\|_{\sum_{ij}}</script><p>​    引入运动方程后变为：</p>
+<script type="math/tex; mode=display">
+\underset{C_1\cdots C_m,X_1\cdots X_n}{\mathrm{argmin}} \sum_{i=1}^m \sum_{j=1}^n\|h(C_i,X_j)-\hat x_{ij}\|_{\sum_{ij}} + \sum_{i=1}^{m-1}\|f(C_i,Z_i)-C_{i+1}\|_{\Gamma_i}</script><p>​    同理，若融合GPS数据，则再引入一项，且均假设数据观测符合<strong>高斯分布</strong>。</p>
+<h3 id="三、代表性单目V-SLAM系统"><a href="#三、代表性单目V-SLAM系统" class="headerlink" title="三、代表性单目V-SLAM系统"></a>三、代表性单目V-SLAM系统</h3><h4 id="3-1基于滤波器的V-SLAM"><a href="#3-1基于滤波器的V-SLAM" class="headerlink" title="3.1基于滤波器的V-SLAM"></a>3.1基于滤波器的V-SLAM</h4><h5 id="3-1-1-MonoSLAM"><a href="#3-1-1-MonoSLAM" class="headerlink" title="3.1.1 MonoSLAM"></a>3.1.1 MonoSLAM</h5><p>单目视觉SLAM，基于<strong>卡尔曼滤波优化模型</strong>，概率预测时体现为椭圆球的概率范围，采取每帧图片中的<strong>Shi-Tomasi</strong>角点为特征点进行匹配。</p>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127143446455.png" alt="image-20220127143446455" style="zoom:80%;"></p>
+<p><strong>缺点：</strong>受限于EKF的局限性：</p>
+<ol>
+<li>如果预测函数和更新函数为非线性(通常 V-SLAM 问题都是非线性的)，那么 EKF 并不能保证全局最优，与 Levenberg-Marquardt[20]等迭代的非线性优化技术相比，更容易造成误差累积。</li>
+<li>若将三维点引入状态变量，则每一时刻的计算复杂度为$O(n^3)$，因此只能处理几百个点的小场景。</li>
+</ol>
+<h5 id="3-1-2-MSCKF"><a href="#3-1-2-MSCKF" class="headerlink" title="3.1.2 MSCKF"></a>3.1.2 MSCKF</h5><p>缓解了EKF方法的计算复杂度问题的一种VI-SLAM</p>
+<ol>
+<li><strong>更新阶段</strong>改进为包含临近 $l$ 帧的状态集合进行优化；</li>
+<li>对所有三维点进行消元使原来的二元约束转化为多元约束，计算复杂度降低至$O(nl^3)$</li>
+</ol>
+<h4 id="3-2基于关键帧BA的V-SLAM"><a href="#3-2基于关键帧BA的V-SLAM" class="headerlink" title="3.2基于关键帧BA的V-SLAM"></a>3.2基于关键帧BA的V-SLAM</h4><h5 id="3-2-1-PTAM"><a href="#3-2-1-PTAM" class="headerlink" title="3.2.1 PTAM"></a>3.2.1 PTAM</h5><p>基本思想： 将相机跟踪(Tracking)和地图构建(Mapping)作为 2 个独立的任务在 2 个线程并行执行。地图构建线程仅维护原视频流中稀疏抽取的关键帧(如图 a 所示)及关键帧中可见的三维点(如图 b 所示)，这样就可以非常高效地求解目标函数(即 BA)；有了 BA 恢复的精确三维结构，相机跟踪线程作为前台线程，仅需优化当前帧运动参数 $C_i$， 足以达到实时的计算效率。</p>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127144005880.png" alt="image-20220127144005880" style="zoom:80%;"></p>
+<p>​    追踪<strong>FAST角点</strong>作为主要特征点。</p>
+<h5 id="3-2-2-ORB-SLAM"><a href="#3-2-2-ORB-SLAM" class="headerlink" title="3.2.2 ORB-SLAM"></a>3.2.2 ORB-SLAM</h5><p>在PTAM基础上改进的目前性能最好的单目V-SLAM系统之一：</p>
+<ol>
+<li>采用<strong>ORB</strong>特征；</li>
+<li>加入<strong>循环回路</strong>和<strong>闭合机制</strong>;</li>
+<li>可自动选择初始化的2帧图片；</li>
+<li>先宽松判断条件使系统尽可能多的加入新的关键帧及三维点，保证后续帧的鲁棒跟踪，再用严格的判断条件删除冗余的关键帧和不稳定的三维点。</li>
+</ol>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127193607859.png" alt="image-20220127193607859" style="zoom:80%;"></p>
+<p><em>（注：ORB-SLAM相关内容后续根据ORB-SLAM2框架进行总结）</em></p>
+<h4 id="3-3-基于直接跟踪的V-SLAM"><a href="#3-3-基于直接跟踪的V-SLAM" class="headerlink" title="3.3 基于直接跟踪的V-SLAM"></a>3.3 基于直接跟踪的V-SLAM</h4><h5 id="3-3-1-DTAM"><a href="#3-3-1-DTAM" class="headerlink" title="3.3.1 DTAM"></a>3.3.1 DTAM</h5><p>其最显著的特点是能实时恢复场景三维模型。 基于三维模型，DTAM 既能允许 AR应用中的虚拟物体与场景发生物理碰撞，又能保证在特征缺失、图像模糊等情况下稳定地直接跟踪。</p>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127194000642.png" alt="image-20220127194000642" style="zoom:80%;"></p>
+<h5 id="3-3-2-LSD-SLAM"><a href="#3-3-2-LSD-SLAM" class="headerlink" title="3.3.2 LSD-SLAM"></a>3.3.2 LSD-SLAM</h5><p>仅恢复<strong>半稠密</strong>的深度图，且每个像素的深度能够独立计算，从而提高了计算效率。采用<strong>关键帧</strong>表达场景，<strong>方位图优化</strong>进行闭合循环和大尺度场景的应用。</p>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127194304616.png" alt="image-20220127194304616" style="zoom:80%;"></p>
+<h4 id="3-4-比较与分析"><a href="#3-4-比较与分析" class="headerlink" title="3.4 比较与分析"></a>3.4 比较与分析</h4><p><strong>性能指标：</strong></p>
+<ol>
+<li>定位精度</li>
+<li>定位效率</li>
+<li>场景尺度</li>
+<li>特征缺失鲁棒性</li>
+<li>重定位能力</li>
+<li>快速运动鲁棒性</li>
+<li>扩展效率</li>
+<li>近似纯旋转扩展鲁棒性</li>
+<li>场景变化鲁棒性</li>
+<li>回路闭合能力</li>
+</ol>
+<p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/image-20220127194555865.png" alt="image-20220127194555865"></p>
+<p>具体分析由各部分系统的特性决定，各个系统的优缺点也依赖于系统的实现。</p>
+<h3 id="四、研究热点与发展趋势"><a href="#四、研究热点与发展趋势" class="headerlink" title="四、研究热点与发展趋势"></a>四、研究热点与发展趋势</h3><h5 id="4-1缓解特征依赖"><a href="#4-1缓解特征依赖" class="headerlink" title="4.1缓解特征依赖"></a>4.1缓解特征依赖</h5><p>V-SLAM的局限就在于依赖场景特征，如何减少对场景特征依赖的同时，提高对特征信息的高效利用是一个重要的提高V-SLAM系统性能的方向。</p>
+<p>现有方法包括<strong>物体边缘、平面颜色</strong>等方面的应用。</p>
+<h5 id="4-2-稠密三维重建"><a href="#4-2-稠密三维重建" class="headerlink" title="4.2 稠密三维重建"></a>4.2 稠密三维重建</h5><p>得益于深度相机的出现，三维建模开始进入发展阶段，同时AR方面更是基于三维建模的基础上去开展的。</p>
+<p>如何处理有限的算力去完成三维建模这样大规模的数据处理是研究的重点，同时三维建模也逐渐引入深度学习方面的技术进行融合。</p>
+<h5 id="4-3-多传感器融合"><a href="#4-3-多传感器融合" class="headerlink" title="4.3 多传感器融合"></a>4.3 多传感器融合</h5><p>这个不必多说，VI-SLAM便是典型代表，如何使用多传感器去融合得到的场景信息，提高建图效率、精度是当前研究的热点方向。</p>
+<h5 id="4-4-实际发展问题"><a href="#4-4-实际发展问题" class="headerlink" title="4.4 实际发展问题"></a>4.4 实际发展问题</h5><p>用户的不专业操作、实际场景的复杂情况都是当前SLAM研究需要解决的方向问题。</p>
+<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><p>本文是建立在自己对SLAM整体框架大致了解的基础上去学习的，所有整体看下来没有太多阻塞的地方。其中最收获最多的地方应该是直接跟踪建图部分的SLAM系统的介绍，这也是当前稠密建图的基础。第三部分的性能比较，也让我了解到各个系统之间的优劣所在，知道应该以什么方向、什么指标去评定一个SLAM系统。</p>
+<p>本文总结于22年，距离文章发表的16年已有6年之多，其中感触最深刻的应该还是三维建模的方面的应用，融入了深度学习的三维建模已逐渐在无人驾驶、AR、XR等领域展露拳脚，同时ORB-SLAM3的开源，更是“灭霸”般的存在。下个时代的代表综述只会更加精彩。</p>
+<h4 id="六、思维导图"><a href="#六、思维导图" class="headerlink" title="六、思维导图"></a>六、思维导图</h4><p><img src="/2022/01/27/SLAM%E7%BB%8F%E5%85%B8%E7%BB%BC%E8%BF%B0%E5%AD%A6%E4%B9%A0/基于单目视觉的同时定位与地图构建方法综述_00.jpg" alt="基于单目视觉的同时定位与地图构建方法综述_00" style="zoom:80%;"></p>
+]]></content>
+      <tags>
+        <tag>SLAM</tag>
+        <tag>Paper Reading</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/31/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<span id="more"></span>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>DR_CAN课程学习——傅里叶级数与变换</title>
+    <url>/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>基于B站UP主<strong>DR_CAN</strong>视频所作总结笔记</p>
+<p>视频链接：<a href="https://space.bilibili.com/230105574/channel/seriesdetail?sid=1569597">DR_CAN——傅里叶级数与变换</a></p>
+<p>先导文章：<a href="https://zhuanlan.zhihu.com/p/19763358">傅里叶分析之掐死教程</a></p>
+</blockquote>
+<span id="more"></span>
+<h2 id="三角函数的正交性"><a href="#三角函数的正交性" class="headerlink" title="三角函数的正交性"></a>三角函数的正交性</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/傅里叶级数与傅里叶变换-2.jpg" alt="傅里叶级数与傅里叶变换-2" style="zoom:67%;"></p>
+<h2 id="周期为2pi的函数展开"><a href="#周期为2pi的函数展开" class="headerlink" title="周期为2pi的函数展开"></a>周期为2pi的函数展开</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/傅里叶级数与傅里叶变换-3.jpg" alt="傅里叶级数与傅里叶变换-3" style="zoom:67%;"></p>
+<h2 id="周期为2L的函数展开"><a href="#周期为2L的函数展开" class="headerlink" title="周期为2L的函数展开"></a>周期为2L的函数展开</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/傅里叶级数与傅里叶变换-4.jpg" alt="傅里叶级数与傅里叶变换-4" style="zoom:67%;"></p>
+<h2 id="傅里叶级数的复数形式"><a href="#傅里叶级数的复数形式" class="headerlink" title="傅里叶级数的复数形式"></a>傅里叶级数的复数形式</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/傅里叶级数与傅里叶变换-5.jpg" alt="傅里叶级数与傅里叶变换-5" style="zoom:67%;"></p>
+<h2 id="从傅里叶级数推导傅里叶变换"><a href="#从傅里叶级数推导傅里叶变换" class="headerlink" title="从傅里叶级数推导傅里叶变换"></a>从傅里叶级数推导傅里叶变换</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E5%8F%98%E6%8D%A2/傅里叶级数与傅里叶变换-6.jpg" alt="傅里叶级数与傅里叶变换-6" style="zoom:67%;"></p>
+<h2 id="一个实用的波形绘制网站"><a href="#一个实用的波形绘制网站" class="headerlink" title="一个实用的波形绘制网站"></a>一个实用的波形绘制网站</h2><p><a href="https://www.desmos.com/">desmos</a></p>
+]]></content>
+      <tags>
+        <tag>DR_CAN</tag>
+        <tag>Theoretical Learning</tag>
+        <tag>Fourier Transform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DR_CAN课程学习——现代控制理论</title>
+    <url>/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>基于B站UP主<strong>DR_CAN</strong>视频所作总结笔记</p>
+<p>视频链接：<a href="https://space.bilibili.com/230105574/channel/seriesdetail?sid=1569601">DR_CAN——现代控制理论</a></p>
+</blockquote>
+<span id="more"></span>
+<h2 id="状态空间"><a href="#状态空间" class="headerlink" title="状态空间"></a>状态空间</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-2.jpg" alt="现代控制理论-2" style="zoom:67%;"></p>
+<h2 id="相图、相轨迹"><a href="#相图、相轨迹" class="headerlink" title="相图、相轨迹"></a>相图、相轨迹</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-3.jpg" alt="现代控制理论-3" style="zoom:67%;"></p>
+<h2 id="爱情中的数学"><a href="#爱情中的数学" class="headerlink" title="爱情中的数学"></a>爱情中的数学</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-4.jpg" alt="现代控制理论-4" style="zoom:67%;"></p>
+<h2 id="系统的可控性"><a href="#系统的可控性" class="headerlink" title="系统的可控性"></a>系统的可控性</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-5.jpg" alt="现代控制理论-5" style="zoom:67%;"></p>
+<h2 id="稳定性、李雅普诺夫定理"><a href="#稳定性、李雅普诺夫定理" class="headerlink" title="稳定性、李雅普诺夫定理"></a>稳定性、李雅普诺夫定理</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-6.jpg" alt="现代控制理论-6" style="zoom:67%;"></p>
+<h2 id="线性控制器的设计"><a href="#线性控制器的设计" class="headerlink" title="线性控制器的设计"></a>线性控制器的设计</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-7.jpg" alt="现代控制理论-7" style="zoom:67%;"></p>
+<h2 id="LQR控制器"><a href="#LQR控制器" class="headerlink" title="LQR控制器"></a>LQR控制器</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-8.jpg" alt="现代控制理论-8" style="zoom:67%;"></p>
+<h2 id="状态观测器设计"><a href="#状态观测器设计" class="headerlink" title="状态观测器设计"></a>状态观测器设计</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-9.jpg" alt="现代控制理论-9" style="zoom:67%;"></p>
+<h2 id="可观测性与分离原理"><a href="#可观测性与分离原理" class="headerlink" title="可观测性与分离原理"></a>可观测性与分离原理</h2><p><img src="/2022/02/03/DR-CAN%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/现代控制理论-10.jpg" alt="现代控制理论-10" style="zoom:67%;"></p>
+]]></content>
+      <tags>
+        <tag>DR_CAN</tag>
+        <tag>Theoretical Learning</tag>
+        <tag>Modern Control Theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SLAM导航实战（三）：SLAM——数学基础</title>
+    <url>/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>本系列主要基于《机器人SLAM导航——核心技术与实战》一书进行学习总结。</p>
+<p>由于SLAM部分篇幅较长，且内容较为重要，预计按照作者章节安排从<strong>数学基础、激光SLAM、视觉SLAM、其他SLAM</strong>四个部分对其进行整理归纳。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本章节作者通过介绍SLAM领域相关的<strong>数学基础</strong>部分，为后续SLAM算法的学习做好铺垫，具体数学推导笔者也会跟随作者在本篇总结做详细整理。</p>
+<span id="more"></span>
+<hr>
+<h2 id="SLAM发展简史"><a href="#SLAM发展简史" class="headerlink" title="SLAM发展简史"></a>SLAM发展简史</h2><p>最初，机器人的<strong>定位与建图</strong>是独立的两个问题，后续采用<strong>概率理论框架</strong>对机器人的<strong>不确定性</strong>进行讨论，同时把地图的<strong>位姿和地图路标</strong>做统一估计，才算是SLAM问题研究的起源。</p>
+<p>SLAM也从<strong>基于滤波</strong>的古典时期过渡到现在<strong>基于优化方法</strong>的现代时期。</p>
+<h3 id="数据关联、收敛、一致性"><a href="#数据关联、收敛、一致性" class="headerlink" title="数据关联、收敛、一致性"></a>数据关联、收敛、一致性</h3><p>数据关联：传感器数据与已构建数据进行匹配，闭环反馈就需要数据之间足够的关联性</p>
+<p>收敛：系统数据的收敛性是理论上衡量系统的可行性的指标之一</p>
+<p>一致性：分为<strong>强一致性</strong>和<strong>弱一致性</strong>，主要区别在于弱一致性是将偏差大的值的概率慢慢趋近于0，而强一致性是所有观测值在整个过程严格收敛于目标 $\theta$</p>
+<h3 id="SLAM基本理论"><a href="#SLAM基本理论" class="headerlink" title="SLAM基本理论"></a>SLAM基本理论</h3><p><strong>滤波方法：</strong>可以看成一种增量算法，获取每一时刻的信息，并将其分解至贝叶斯网络的概率分布来估计当前时刻的状态。</p>
+<p><strong>优化方法：</strong>不断累积获取到的信息，并基于此计算机器人轨迹及路标点。其计算信息存储在各个待估计变量间的约束中。通过<strong>近似线性化</strong>或者<strong>迭代</strong>的方法进行求解。</p>
+<p><strong>二者区别：</strong> <strong>最大似然</strong>及<strong>最小二乘</strong>的区别，优化方法之间限制于存储的问题，在约束结构稀疏性的研究下得到了进一步的解决，从而占据当前SLAM研究的主导地位。</p>
+<hr>
+<h2 id="SLAM中的概率理论"><a href="#SLAM中的概率理论" class="headerlink" title="SLAM中的概率理论"></a>SLAM中的概率理论</h2><p>机器人实际运行情况下存在<strong>传感器测量噪声、电机控制偏差、计算机软件计算精度近似</strong>等不确定性，故需要用概率对其不确定性进行描述估计。</p>
+<p>单纯的运动会导致机器人系统整体的不确定性增大，引入观测可以使系统整体的不确定性降低。</p>
+<h3 id="状态估计问题"><a href="#状态估计问题" class="headerlink" title="状态估计问题"></a>状态估计问题</h3><p>SLAM问题本质上属于<strong>状态估计问题</strong>，其估计观测的便是机器人的位姿以及路标点。</p>
+<p>机器人系统运动过程中不断对路标点以及自身位姿进行估计，二者概率描述如下：</p>
+<script type="math/tex; mode=display">
+P(z_k|x_k,m) \\
+P(x_k|x_{k-1},u_k)</script><p>SLAM问题解决的便是对于路标以及机器人位姿的估计问题。<em>（注：SLAM的估计并不是简单的路标估计和位姿估计的乘积）</em></p>
+<script type="math/tex; mode=display">
+P(x_k,m|Z_{0:k},U_{0:k},x_0)</script><h3 id="概率运动模型"><a href="#概率运动模型" class="headerlink" title="概率运动模型"></a>概率运动模型</h3><h4 id="速度运动模型"><a href="#速度运动模型" class="headerlink" title="速度运动模型"></a>速度运动模型</h4><p>在不考虑速度误差的情况下，机器人的状态转移方程可以表示为：</p>
+<script type="math/tex; mode=display">
+x_k=\begin{bmatrix}
+x' \\
+y' \\
+\theta '
+\end{bmatrix}
+=g(x_{k-1},u_k)=
+\begin{bmatrix}
+x \\
+y \\
+\theta 
+\end{bmatrix}+
+\begin{bmatrix}
+cos\theta   & -sin\theta  & 0\\
+sin\theta   & cos\theta  & 0\\
+0  & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+v_x \\
+v_y \\
+\omega _z
+\end{bmatrix}
+\Delta t</script><p>上式需要满足两个条件：<em>运动时间很小；实际前馈运动不存在误差</em></p>
+<p>若此时考虑速度的误差，且<strong>$u_k、x_{k-1}、x_k$均服从高斯分布</strong>，此时$u_k$的协方差矩阵表示为：</p>
+<script type="math/tex; mode=display">
+\sum u_k=\begin{bmatrix}
+ \sigma_{v_x}^2  & 0 & 0\\
+ 0 & \sigma_{v_y}^2 & 0\\
+ 0 & 0 & \sigma_{w_z}^2
+\end{bmatrix}</script><p>由此，对状态转移函数进行一阶泰勒级数展开线性化后，计算$x_k$的协方差矩阵</p>
+<script type="math/tex; mode=display">
+\sum x_k=\begin{bmatrix}
+\frac{\partial g}{\partial x_{k-1}}   & \frac{\partial g}{\partial u_k}\\
+\end{bmatrix}
+\begin{bmatrix}
+\sum x_{k-1}  & 0_{3\times3}\\
+0_{3\times3}  & \sum x_{u_k}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial g}{\partial x_{k-1}}   & \frac{\partial g}{\partial u_k}\\
+\end{bmatrix}^T</script><p>同样的，上述模型也是基于两个前提条件：<em>运动时间很小；运动以及状态估计误差服从高斯分布</em></p>
+<h4 id="里程计模型"><a href="#里程计模型" class="headerlink" title="里程计模型"></a>里程计模型</h4><p>由于速度运动模型条件假设过于严格，故主要采用实际工程更加可行的里程计模型</p>
+<p>在考虑里程计误差，且变量服从高斯分布的情况下，其运动协方差表示为：</p>
+<script type="math/tex; mode=display">
+\sum u_k=\begin{bmatrix}
+ \sigma_{\Delta_x}^2 & 0 & 0 & 0 & 0 & 0\\
+ 0 & \sigma_{\Delta_y}^2 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0 & \sigma_{\Delta_\theta }^2
+\end{bmatrix}</script><p>上式表示机器人<strong>三维空间运动协方差矩阵</strong>，若机器人限制于二维平面，则由上式矩阵内形式表示，式中，各变量表示如下：</p>
+<script type="math/tex; mode=display">
+ \sigma_{\Delta_x}^2 = \xi_{\Delta xy} + \alpha_1 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_2 |\Delta  \theta | \\
+  \sigma_{\Delta_y}^2 = \xi_{\Delta xy} + \alpha_1 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_2 |\Delta  \theta | \\
+   \sigma_{\Delta_\theta}^2 = \xi_{\Delta \theta} + \alpha_3 \sqrt[2]{(\Delta x)^2 + (\Delta y)^2}  + \alpha_4 |\Delta  \theta |</script><p>观察上式，里程计误差可以用底盘参数$\alpha_1 \sim \alpha_4$进行表示</p>
+<p><strong>误差直接设定为常数的理论依据：</strong>通常里程计数据是固定时间间隔发布，一定时间内的运动和旋转量基本一样</p>
+<h3 id="概率观测模型"><a href="#概率观测模型" class="headerlink" title="概率观测模型"></a>概率观测模型</h3><p>传感器观测两步走：<strong>提取环境路标特征；数据关联</strong></p>
+<h4 id="波束模型"><a href="#波束模型" class="headerlink" title="波束模型"></a>波束模型</h4><p>这部分的误差假设不太明白，所以暂时跳过</p>
+<h4 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h4><p>图结构主要使得概率模型中的各个随机变量关系变得更加直观，也使复杂的概率计算过程得到简化</p>
+<p>这部分主要使关于<strong>因子图</strong>内容，故对其他概念做简要概述</p>
+<p><strong>贝叶斯网络： </strong> <strong>有向无环图</strong>，分为<strong>静态贝叶斯网络、动态贝叶斯网络</strong> <em>（注：SLAM中应用就是动态贝叶斯网络）</em></p>
+<p><strong>马尔可夫网络：</strong> <strong>无向（有环）图</strong>，其中还涉及到<strong>团</strong>的概念</p>
+<p>本质上都是应用<strong>贝叶斯准则</strong>对其分解为各部分条件独立的情况下的随机变量的乘积，再将这些“小”乘积用图的形式表达出来变量之间的关系</p>
+<h4 id="因子图"><a href="#因子图" class="headerlink" title="因子图"></a>因子图</h4><p>引入一个简单的SLAM模型</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208214348217.png" alt="image-20220208214348217" style="zoom:67%;"></p>
+<p>其各部分的联合概率分布表示如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P(\boldsymbol{X}, \boldsymbol{m}, \boldsymbol{Z}, \boldsymbol{U})=&\left.\left.P\left(\boldsymbol{m}_{1}\right) P\left(\boldsymbol{m}_{2}\right) P\left(\boldsymbol{u}_{0}\right) P\left(\boldsymbol{u}_{1}\right) P\left(\boldsymbol{u}_{2}\right)\right\} \text { ( 先验, 可忽略) }\right) \times \\
+&\left.\left.P\left(\boldsymbol{x}_{0}\right) P\left(\boldsymbol{x}_{1} \mid \boldsymbol{x}_{0}, \boldsymbol{u}_{1}\right) P\left(\boldsymbol{x}_{2} \mid \boldsymbol{x}_{1}, \boldsymbol{u}_{2}\right) P\left(\boldsymbol{x}_{3} \mid \boldsymbol{x}_{2}, \boldsymbol{u}_{3}\right)\right\} \text { (运动) }\right) \times \\
+&\left.P\left(\boldsymbol{z}_{1} \mid \boldsymbol{x}_{1}, \boldsymbol{m}_{1}\right) P\left(\boldsymbol{z}_{2} \mid \boldsymbol{x}_{2}, \boldsymbol{m}_{1}\right) P\left(\boldsymbol{z}_{3} \mid \boldsymbol{x}_{3}, \boldsymbol{m}_{2}\right)\right\} \text { (观测) }
+\end{aligned}</script><p>上式由<strong>先验（已知，可忽略）、运动、观测</strong>组成，由传感器获得的$U、Z$后对不可测量的$X、m$进行推理估计，一般采用<strong>最大后验估计</strong></p>
+<script type="math/tex; mode=display">
+S_{MAP}=arg \max_S P(S|V) \\
+V=\{Z,U\} \\
+S=\{X,m\}</script><p>通过构建<strong>运动和观测</strong>两个约束构建因子函数</p>
+<script type="math/tex; mode=display">
+P(\boldsymbol{S} \mid \boldsymbol{V}) \propto \psi(\boldsymbol{S})=\prod \psi_{i}(\boldsymbol{X}, \boldsymbol{m}, \boldsymbol{Z}, \boldsymbol{U})</script><p>改写最大后验估计为</p>
+<script type="math/tex; mode=display">
+S_{MAP}=arg \max_S \psi(\boldsymbol{S})</script><p>引入噪声，且噪声符合高斯分布，得到运动和观测的噪声模型</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\boldsymbol{x}_{k}=g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)+\boldsymbol{R}_{k} \\
+\boldsymbol{z}_{k}=h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)+\boldsymbol{Q}_{k}
+\end{array}</script><p>用运动误差及观测误差构造两种因子项</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right) \propto \mathrm{e}^{-\frac{1}{2}\left(x_{k}-g\left(x_{k-1}, u_{k}\right)\right)^{\mathrm{T}} \Sigma_{R_{k}}^{-1}\left(x_{k}-g\left(x_{k-1}, u_{k}\right)\right)} \\
+\psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right) \propto \mathrm{e}^{-\frac{1}{2}\left(z_{k}-h\left(x_{k}, m_{j}\right)\right)^{\mathrm{T}} \Sigma_{Q_{k}}^{-1}\left(z_{k}-h\left(x_{k}, m_{j}\right)\right)}
+\end{array}</script><p>整理后得到</p>
+<script type="math/tex; mode=display">
+\psi(\boldsymbol{S}) \propto \prod_{i 1} \psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right) \cdot \prod_{i 2} \psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)</script><script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{S}_{\mathrm{MAP}}=& \arg \max _{s} \psi(\boldsymbol{S}) \\
+\propto &\left.\arg \max _{s}\left(\sum_{i 1} \ln \psi_{i 1}\left(\boldsymbol{x}_{k}, \boldsymbol{x}_{k-1}\right)+\sum_{i 2} \ln \psi_{i 2}\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)\right) \\
+\propto & \arg \max _{s}\left(-\frac{1}{2} \sum_{i 1}\left(\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{\boldsymbol{R}_{k}}^{-1}\left(\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right)-\right.\\
+&\left.\frac{1}{2} \sum_{i 2}\left(\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{\boldsymbol{Q}_{k}}^{-1}\left(\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right)\right) \\
+\propto &\left.\arg \min _{s}\left(\sum_{i 1}\left\|\boldsymbol{x}_{k}-g\left(\boldsymbol{x}_{k-1}, \boldsymbol{u}_{k}\right)\right\|_{\Sigma_{k_{k}}^{-1}}^{2}+\sum_{i 2}\left\|\boldsymbol{z}_{k}-h\left(\boldsymbol{x}_{k}, \boldsymbol{m}_{j}\right)\right\|_{\Sigma_{\ell_{k}}^{-1}}\right)^{2}\right)
+\end{aligned}</script><p><em>（引入对数，将乘法转化为加法）</em></p>
+<p>由上式可得，<strong>0均值高斯噪声</strong>SLAM问题采用最大后验估计等于最小二乘估计。其实满足0均值高斯噪声，最大后验等价最小均方误差等于最小二乘，因子图应用到SLAM问题，对滤波方法转向优化方法起到关键作用</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220208220839473.png" alt="image-20220208220839473" style="zoom:67%;"></p>
+<hr>
+<h2 id="SLAM中的估计理论"><a href="#SLAM中的估计理论" class="headerlink" title="SLAM中的估计理论"></a>SLAM中的估计理论</h2><p>研究问题过程中，对某个参数感兴趣但却无法准确获得，，只能通过一组观测的样本值对猜测参数，这便是估计。</p>
+<h3 id="估计量的性质"><a href="#估计量的性质" class="headerlink" title="估计量的性质"></a>估计量的性质</h3><ul>
+<li>一致性</li>
+<li>偏差性</li>
+</ul>
+<h3 id="估计量的构建"><a href="#估计量的构建" class="headerlink" title="估计量的构建"></a>估计量的构建</h3><p>最好的估计应该为<strong>最小方差无偏估计（MVUE）</strong>，但其实现往往较难，故通常寻找近似方法。本书中作者介绍常用的近似方法总体下来构建思路大同小异，再次不一一描述，而是简要总结其构建步骤及各近似方法之间的联系。</p>
+<p>构建过程通常如下：</p>
+<ol>
+<li>构建代价函数</li>
+<li>对代价函数进行求导，并领倒数等于0，求出代价函数极值点</li>
+</ol>
+<p>经典估计有：<strong>最大似然估计、最小二乘估计</strong></p>
+<p>“动态”估计有：<strong>贝叶斯估计</strong> <em>（注：动态估计是笔者自己瞎取的，因为估计值设定为可变，不确定，故称为动态）</em></p>
+<h3 id="各估计的关系"><a href="#各估计的关系" class="headerlink" title="各估计的关系"></a>各估计的关系</h3><p>此处直接引用作者的两张图做整理，直接总结了本小节的核心内容</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152807808.png" alt="image-20220209152807808" style="zoom:67%;"></p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209152827097.png" alt="image-20220209152827097" style="zoom:67%;"></p>
+<hr>
+<h2 id="基于贝叶斯网络的状态估计"><a href="#基于贝叶斯网络的状态估计" class="headerlink" title="基于贝叶斯网络的状态估计"></a>基于贝叶斯网络的状态估计</h2><p>该部分主要是滤波算法的介绍，后续专门整理，故先跳过</p>
+<hr>
+<h2 id="基于因子图的状态估计"><a href="#基于因子图的状态估计" class="headerlink" title="基于因子图的状态估计"></a>基于因子图的状态估计</h2><p>贝叶斯网络中的最大后验估计等效于<strong>因子图中的最小二乘估计</strong></p>
+<p>对于最小二乘估计通常有两个解法：<strong>线性近似处理；迭代求解</strong></p>
+<h3 id="直接求解法"><a href="#直接求解法" class="headerlink" title="直接求解法"></a>直接求解法</h3><p>主要是采用了<strong>Cholesky；QR</strong>两种分解方法对方程进行求解</p>
+<h3 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h3><h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+\operatorname{do}\left\{x^{(k+1)}=x^{(k)}-\alpha \cdot \nabla \psi\left(x^{(k)}\right)\right. \\
+\} \text { while }\left(\psi\left(x^{(k+1)}\right)<\psi\left(x^{(k)}\right)\right)
+\end{array}</script><p>沿梯度方向不断逼近目标点，但迭代过程中<strong>步长不变</strong>使得其可能出现<strong>迭代次数过多（步长太小）；目标点附近震荡（步长太长）</strong>的问题</p>
+<p>机器人应用迭代法时，需要对机器人的空间位姿 pose 进行求导，但其内部存在的额外约束导致求导和求和运算无法直接进行，此时就需要将其转换到<strong>李代数</strong>上进行求导和求和操作。</p>
+<h4 id="最速下降法"><a href="#最速下降法" class="headerlink" title="最速下降法"></a>最速下降法</h4><script type="math/tex; mode=display">
+\alpha_{k}=\arg \min _{\alpha \geqslant 0} \psi\left(\boldsymbol{x}^{(k)}-\alpha \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)\right)</script><p>为解决梯度下降的问题，采用可变步长的方法，通常步长方向取<strong>垂直于两端梯度等高线的方向</strong></p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209213429407.png" alt="image-20220209213429407" style="zoom:67%;"></p>
+<h4 id="高斯-牛顿法"><a href="#高斯-牛顿法" class="headerlink" title="高斯-牛顿法"></a>高斯-牛顿法</h4><p>几个概念：</p>
+<ul>
+<li>梯度：多维自变量与一维因变量函数中，函数的一阶导数</li>
+<li>海森矩阵：多维自变量与一维因变量函数中，函数的二阶导数</li>
+<li>雅可比矩阵：多维自变量与多维因变量函数中，函数的一阶导数</li>
+<li>多个海森矩阵组合：多维自变量与多维自变量函数中，函数的二阶导数</li>
+</ul>
+<p>由于需要对某一点自变量做二次泰勒展开，故需要求其梯度和海森矩阵</p>
+<script type="math/tex; mode=display">
+\psi(x)=\sum_{i}\left\|\boldsymbol{y}_{i}-f\left(\boldsymbol{x}_{i}\right)\right\|_{\Sigma_{i}^{-1}}^{2}=\sum_{i=1}^{m}\left\|e_{i}(\boldsymbol{x})\right\|^{2}=\|e(\boldsymbol{x})\|^{2}=e(\boldsymbol{x})^{\mathrm{T}} \cdot e(\boldsymbol{x})</script><p>梯度和海森矩阵分别为</p>
+<script type="math/tex; mode=display">
+\underbrace{\nabla \psi}_{g r a d_{\psi}}=2 \cdot \text { Jacobian }_{e}^{\mathrm{T}} \cdot e(\boldsymbol{x}) \\
+\underbrace{\nabla^{2} \psi(x)}_{\text {Hessian }_{\psi}} \approx 2 \cdot \text { Jacobian }_{e}^{\mathrm{T}} \cdot \text { Jacobian }_{e}</script><p>代入代价函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\nabla \psi(\boldsymbol{x}) & \approx \nabla\left(\psi\left(\boldsymbol{x}^{(k)}\right)+\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)^{\mathrm{T}} \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)+\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)^{\mathrm{T}} \cdot \nabla^{2} \psi\left(\boldsymbol{x}^{(k)}\right) \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)\right) \\
+&=\nabla \psi\left(\boldsymbol{x}^{(k)}\right)+\nabla^{2} \psi\left(\boldsymbol{x}^{(k)}\right) \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)=0 \\
+& \Leftrightarrow 2 \cdot \boldsymbol{J a c o b i a n}_{e}^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right)+2 \cdot \boldsymbol{J a c o b i a n}_{e}{ }^{\mathrm{T}} \cdot \boldsymbol{J a c o b i a n}_{e} \cdot\left(\boldsymbol{x}-\boldsymbol{x}^{(k)}\right)=0 \\
+\text { 令 } \Delta \boldsymbol{x}=\boldsymbol{x}-\boldsymbol{x}^{(k)}, & \text { 那么: } \boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}=-\boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e} 。
+\end{aligned}</script><p>则此时下一个迭代点为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)}=\boldsymbol{x}^{(k)}-\left(\boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}{ }^{\mathrm{T}} \boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}\right)^{-1} \cdot \boldsymbol{J}_{e\left(\boldsymbol{x}^{(k)}\right)}{ }^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right)</script><p>其中雅可比的转置与自身的乘积采用<strong>Cholesky；QR</strong>求解</p>
+<h4 id="列文伯格-马夸尔特算法"><a href="#列文伯格-马夸尔特算法" class="headerlink" title="列文伯格-马夸尔特算法"></a>列文伯格-马夸尔特算法</h4><p>高斯-牛顿法只能在目标点附近有较好的效果，且不一定能向目标点方向迭代</p>
+<script type="math/tex; mode=display">
+\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}+\mu_{k} \cdot \boldsymbol{I}\right) \cdot \Delta \boldsymbol{x}=-\boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e} \\
+\Delta \boldsymbol{x}=-\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}+\mu_{k} \cdot \boldsymbol{I}\right)^{-1} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}</script><p>本质上引入了$u_k$这个<strong>阻尼系数</strong>，其取值取决于如下比值</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Delta \psi=\psi\left(\boldsymbol{x}^{(k)}+\Delta \boldsymbol{x}\right)-\psi\left(\boldsymbol{x}^{(k)}\right)=\psi\left(\boldsymbol{x}^{(k+1)}\right)-\psi\left(\boldsymbol{x}^{(k)}\right) \\
+\Delta \varphi=\varphi(\Delta \boldsymbol{x})-\varphi(\boldsymbol{0})=2 \Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}+\Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}
+\end{array}  \\</script><script type="math/tex; mode=display">
+\gamma_{k}=\frac{\Delta \psi}{\Delta \varphi}=\frac{\psi\left(\boldsymbol{x}^{(k+1)}\right)-\psi\left(\boldsymbol{x}^{(k)}\right)}{2 \Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}+\Delta \boldsymbol{x}^{\mathrm{T}} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{J}_{e} \cdot \Delta \boldsymbol{x}}</script><p>通过$\gamma_{k}$来调节$\mu_{k}$：趋近1，高斯-牛顿主导；逼近0，梯度下降主导；比值小于0，则拒绝迭代，修改阻尼系数。</p>
+<h4 id="狗腿算法"><a href="#狗腿算法" class="headerlink" title="狗腿算法"></a>狗腿算法</h4><p>列文伯格-马夸尔特算法存在拒绝迭代而浪费算力的情况</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Delta \boldsymbol{x}_{\mathrm{SD}}=-\alpha_{k} \cdot \nabla \psi\left(\boldsymbol{x}^{(k)}\right)=-\alpha_{k} \cdot 2 \cdot \boldsymbol{J a c o b i a n}_{e}^{\mathrm{T}} \cdot e\left(\boldsymbol{x}^{(k)}\right) \\
+\Delta \boldsymbol{x}_{\mathrm{GN}}=-\left(\boldsymbol{J}_{e}^{\mathrm{T}} \boldsymbol{J}_{e}\right)^{-1} \cdot \boldsymbol{J}_{e}^{\mathrm{T}} \cdot \boldsymbol{e}
+\end{array}</script><p>根据上述两个变量对阻尼系数进行调整，具体调整方式，参考下图</p>
+<p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209215919536.png" alt="image-20220209215919536" style="zoom:67%;"></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>可以清楚发现，每一种算法都是为了解决上面算法的问题作出的改进，理论上，算法不断优化，效果不断提升，但同时，其对算力的要求也不断增加，故需要根据实际情况选择对应的算法。</p>
+<h4 id="常用优化工具"><a href="#常用优化工具" class="headerlink" title="常用优化工具"></a>常用优化工具</h4><ul>
+<li>g2o（轻量，所需依赖少）</li>
+<li>ceres-Slover（数值自动求导，避免复杂雅可比计算）</li>
+<li>GTSAM（优化过程能增量计算，优化速度快）</li>
+</ul>
+<p>基本用法</p>
+<ol>
+<li>图结构定义非线性最小二乘，定义状态量，约束关系</li>
+<li>选用优化策略</li>
+<li>启动求解器迭代</li>
+</ol>
+<h2 id="现主流SLAM算法"><a href="#现主流SLAM算法" class="headerlink" title="现主流SLAM算法"></a>现主流SLAM算法</h2><p><img src="/2022/02/04/SLAM%E5%AF%BC%E8%88%AA%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASLAM%E2%80%94%E2%80%94%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220209220500189.png" alt="image-20220209220500189" style="zoom:67%;"></p>
+]]></content>
+      <tags>
+        <tag>SLAM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu18.04下pytorch深度学习环境搭建</title>
+    <url>/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>大三下学期专业有一门《模式识别》的课程，主要是涉及其中<strong>深度学习</strong>这个分支，由于需要算力支持，所以借同学的电脑后，基于<strong>Ubuntu18.04</strong>系统下配置<strong>pytorch</strong>深度学习框架的环境，其中遇到诸多困难，在这里做总结记录。</p>
+</blockquote>
+<h2 id="环境版本"><a href="#环境版本" class="headerlink" title="环境版本"></a>环境版本</h2><ul>
+<li>Ubuntu18.04 LTS</li>
+<li>Anaconda x86 linux支持版 python3.9</li>
+<li>pytorch 1.10.2</li>
+</ul>
+<span id="more"></span>
+<h2 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h2><ul>
+<li>Nvidia RTX-1070</li>
+<li>CUDA 11.3</li>
+<li>cuDNN CUDA11.3 对应版本8.2.0</li>
+</ul>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><h3 id="Ubuntu18-04"><a href="#Ubuntu18-04" class="headerlink" title="Ubuntu18.04"></a>Ubuntu18.04</h3><p>主要是双系统配置，其中完全跟着此篇教程进行双系统安装<a href="https://www.jianshu.com/p/54d9a3a695cc">Ubuntu18.04双系统安装</a></p>
+<p><del>(之前本人笔记本是DELL，究极折磨，一天送去维修两次)</del></p>
+<h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><p>直接去官网下载对应的版本，<a href="https://www.anaconda.com/products/individual">Anaconda官网</a></p>
+<h3 id="显卡驱动-1"><a href="#显卡驱动-1" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>首先检查ubuntu系统推荐的相关驱动</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ubuntu-drivers devices</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093633842.png" alt="image-20220227093633842"></p>
+<p>执行后会得到类似上面的一张图，其中会有一项<strong>recommended</strong>，这个是ubuntu推荐安装的驱动，这里笔者比较怂，去官网查看对应版本的显卡驱动<a href="https://www.nvidia.com/Download/index.aspx">Nvidia显卡驱动下载</a></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227093909109.png" alt="image-20220227093909109" style="zoom:67%;"></p>
+<p>查看后发现官方推荐是510的驱动，和ubuntu推荐安装是同一个版本，所以直接通过ubuntu系统安装对应驱动，执行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo ubuntu-drivers autoinstall</span><br></pre></td></tr></table></figure>
+<p>执行指令，查看驱动安装情况</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<p>若正常显示如下，则驱动安装完成</p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227094305219.png" alt="image-20220227094305219" style="zoom:67%;"></p>
+<p>其中笔者框选出来的地方是对应的驱动版本，笔者是510版本，同时官方安装驱动后，会在驱动版本显示右侧（框选框的右侧）显示<strong>CUDA</strong>支持版本，笔者当时是<strong>CUDA11.6</strong>，即RTX1070最高支持11.6版本的CUDA</p>
+<p><strong>（注：是最高支持版本，不是已安装好的版本，这个时候CUDA还没安装！）</strong></p>
+<p>网上很多资料是非Ubuntu自带安装驱动，这里贴一条笔者当时查的教程<a href="https://blog.csdn.net/yaohuan2017/article/details/108670724">Nvidia驱动安装</a></p>
+<h3 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h3><p>这个是折磨笔者最久的一个部分，最后在知乎找到一份靠谱的教程</p>
+<p><a href="https://zhuanlan.zhihu.com/p/122286055">NVIDIA CUDA Toolkit 11.0 安装与卸载</a></p>
+<p>这里笔者没有跟着安装11.0的版本，而是先查看了pytorch官网当时主要支持的CUDA版本</p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227095240649.png" alt="image-20220227095240649" style="zoom:80%;"></p>
+<p>可以看到，上面官网是11.3的版本，所以笔者相应的安装了11.3的版本<strong>（注：不过后来问同学，更多是使用11.0或11.1）</strong></p>
+<p>这里有一个坑，当时用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure>
+<p>查看CUDA版本时候，提示笔者</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install nvidia-cuda-toolkits</span><br></pre></td></tr></table></figure>
+<p>笔者以为只是个相应的支持工具包，就安装了，后面确实可以查看版本，但11.3安装完成后，显示的版本还是<strong>CUDA9.1</strong>，才搞明白这条指令相当于ubuntu下帮你安装了9.1的CUDA，后面删除原CUDA</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get purge nvidia-cuda-toolkit</span><br></pre></td></tr></table></figure>
+<p>具体参考这篇博客<a href="https://blog.csdn.net/u011119817/article/details/100525948">【nvidia】2.cuda旧版本卸载</a></p>
+<p>卸载后，笔者发现连版本都查不了了……<del>（差点暴毙）</del>，后面找到了本节介绍的教程，发现是没有把他CUDA11.3加入系统环境，加入环境后，查看CUDA为11.3版本。</p>
+<h3 id="cuDNN安装"><a href="#cuDNN安装" class="headerlink" title="cuDNN安装"></a>cuDNN安装</h3><p>这个安装主要费劲在Nvidia官网账号的注册上（国内网速dddd），其他只要找到<strong>CUDA版本对应的cuDNN版本即可</strong></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227100413844.png" alt="image-20220227100413844" style="zoom:80%;"></p>
+<p>如上，笔者11.3版本，对应是8.2.1的cuDNN版本</p>
+<p>下载后还要进行一系列操作，具体如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64 </span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h </span><br><span class="line">sudo chmod a+r /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+<p><strong>注意：上面cuda要查看自己下载到local文件夹的cuda文件夹的名字，笔者是cuda-11.3</strong></p>
+<p>具体可以参考教程<a href="https://blog.csdn.net/weixin_44003563/article/details/90312965">ubuntu18.04配置cudnn详细步骤</a></p>
+<h3 id="pytorch"><a href="#pytorch" class="headerlink" title="pytorch"></a>pytorch</h3><p>在安装pytorch之前，需要先了解一下anaconda的虚拟环境。</p>
+<p>由于深度学习对应诸多模块版本不同的问题，anaconda可以建立一个虚拟环境，该环境用户可以任意配置相关的模块版本以便满足不同模型的需求而不会和系统模块产生冲突，同时避免环境崩坏而整个系统环境不能正常使用的情况<del>（系统各种版本冲突，最后无奈只能重装整个环境）</del>。</p>
+<p>具体anaconda配置pytorch可参考<a href="https://zhuanlan.zhihu.com/p/25198543">最省心的Python版本和第三方库管理——初探Anaconda</a></p>
+<p>上述教程主要是win下，笔者win跟着做没有什么问题，但ubuntu下还是存在部分问题，下面做部分总结。</p>
+<p>首先我们创建一个虚拟空间并激活</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda create -n lane_det python=3.9</span><br><span class="line">activate lane_det</span><br></pre></td></tr></table></figure>
+<p>激活后，可以用如下指令查该虚拟环境还有模块</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>可以发现并除了几个基本模块，没有其他模块。我们先安装pytorch相关模块</p>
+<p>前往<a href="https://pytorch.org/">pytorch官网</a>，选择自己对应版本<em>(注：这里用conda，此指令是在虚拟环境执行，pip可能会安装到全局（应该）)</em></p>
+<p><img src="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20220227101623594.png" alt="image-20220227101623594"></p>
+<p>复制上述指令后，等待安装完成，安装完成后，执行查看指令，查看模块是否已经安装。</p>
+<p>至此pytorch深度学习的环境搭建基本结束，但这里笔者还遇到几个问题，再做总结。</p>
+<p>启动jupyter notebook后，导入torch模块，不能找到，找了很多教程<del>（主要关键词不知道搜什么）</del>最后搜到如下教程，成果解决了这个问题</p>
+<p><a href="https://blog.csdn.net/qq_39504519/article/details/108039594">解决jupyter notebook无法找到虚拟环境的问题</a></p>
+]]></content>
+      <tags>
+        <tag>pytorch</tag>
+        <tag>Ubuntu18.04</tag>
+        <tag>Anaconda</tag>
+        <tag>DL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ultral-Fast-Lane-Detection 整理</title>
+    <url>/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>前言</strong></p>
+<p>最近接触了<strong>自动驾驶</strong>方向的一个子任务——<strong>Lane Detection</strong>，即车道线检测，查阅相关的文献，着手复现<strong>《Ultra Fast Structure-aware Deep Lane Detection》</strong>这篇文章的模型实验，在此对实验复现以及论文内容做简要总结记录。</p>
+<p>论文：<a href="https://arxiv.org/pdf/2004.11757v4.pdf">Ultra Fast Structure-aware Deep Lane Detection</a></p>
+<p>代码：<a href="https://github.com/cfzd/Ultra-Fast-Lane-Detection">code地址</a></p>
+</blockquote>
+<h2 id="实验复现"><a href="#实验复现" class="headerlink" title="实验复现"></a>实验复现</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>主要是深度学习环境的搭建，具体版本及搭建教程参考笔者这篇文章<a href="https://appz99.github.io/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more">Ubuntu18.04下pytorch深度学习环境搭建</a> </p>
+<p>其中CUDA版本可以与作者不同。</p>
+<span id="more"></span>
+<h3 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h3><p>这里直接跟着作者的安装教程即可 <a href="https://github.com/cfzd/Ultra-Fast-Lane-Detection/blob/master/INSTALL.md">INSTALL</a></p>
+<p>注意可视化部分需要安装作者的 <em>requirements</em>，在安装文档里作者有相应提示</p>
+<h3 id="下载数据集"><a href="#下载数据集" class="headerlink" title="下载数据集"></a>下载数据集</h3><p>直接去作者安装教程里的超链接即可，若网速受限则参考下一部分笔者推荐的文档里的百度云</p>
+<h3 id="数据集解压整理"><a href="#数据集解压整理" class="headerlink" title="数据集解压整理"></a>数据集解压整理</h3><p>这里笔者第一次跑模型不太懂，查了老半天资料数据集要怎么放，主要参考这篇文档：<a href="https://blog.csdn.net/weixin_46716951/article/details/112650165">车道线检测论文Ultra-Fast-Lane-Detection-master代码复现过程</a></p>
+<p>里面有数据集的百度云链接</p>
+<p>这里有个地方需要注意：笔者一开始看训练数据和测试数据有相同的文件夹，例如两者都有“0601”这个文件夹，笔者以为内容是一样的，所以就没有把测试集的数据<strong>合并</strong>一起，导致在最后跑测试集的时候，找不到对应的数据（但不影响训练）。所以<strong>相同命名文件夹要合并在一起</strong>。</p>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p>剩下部分直接跟着作者的README文档做即可</p>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>跑作者的<strong>demo.py</strong>文件即可，具体参考作者README中<strong>Visualization</strong></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>这里笔者在第一次跑训练模型的时候对<strong>train.py</strong>文件不做任何修改，导致每训练一次都保存一次训练好的模型，最后跑到70多轮的时候内存爆了……</p>
+<p>解决上述问题很好解决，在train.py文件中修改保存模型代码即可，以下是笔者所作修改：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(resume_epoch, cfg.epoch):</span><br><span class="line"></span><br><span class="line">        train(net, train_loader, loss_dict, optimizer, scheduler,logger, epoch, metric_dict, cfg.use_aux)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ((epoch + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>):<span class="comment">#作者一共跑100epoch</span></span><br><span class="line">            save_model(net, optimizer, epoch ,work_dir, distributed)</span><br><span class="line">    logger.close()</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h3 id="可视化训练过程"><a href="#可视化训练过程" class="headerlink" title="可视化训练过程"></a>可视化训练过程</h3><p>主要参考这篇教程：<a href="https://blog.csdn.net/bigbennyguo/article/details/87956434">详解PyTorch项目使用TensorboardX进行训练可视化</a></p>
+<p>但笔者没有配置任何东西……<del>（不太懂，不知道是不是作者已经配置好了什么）</del></p>
+<p>直接安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install tensorboardX</span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tensorboard --logdir log_path --bind_all</span><br><span class="line"><span class="meta">#</span><span class="bash"> log_path为<span class="built_in">log</span>文件夹下对应的<span class="built_in">log</span>文件路径</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="论文学习"><a href="#论文学习" class="headerlink" title="论文学习"></a>论文学习</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>区别于传统的语义分割方法去做检测，作者采用了<strong>row-based selection problem using global features</strong>的方法去做车道检测，最大的优势在于<strong>计算量少，速度快；同时能根据global feature解决无视觉信息（no-visual-clue）情况下预测车道线位置，同时能取得不错的精度</strong>。在其轻量模型<strong>Res-18</strong>情况下能达到300+帧每秒。</p>
+<h3 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h3><p>总体来说每张图片预定义<strong>Row anchors</strong>同时指定<strong>(w+1)</strong>维的<strong>cells</strong>，检测就建立在上图预定义的网格之中。</p>
+<p>这里作者介绍了自己该模型的三大特点：</p>
+<ul>
+<li>利用 global features 更好解决 no-visual-clue 的问题</li>
+<li>区别传统语义分割方法检测</li>
+<li>计算少，速度快</li>
+</ul>
+<h3 id="方法（损失函数设计）"><a href="#方法（损失函数设计）" class="headerlink" title="方法（损失函数设计）"></a>方法（损失函数设计）</h3><p>各变量说明</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194808716.png" alt="image-20220301194808716"></p>
+<h4 id="定位损失"><a href="#定位损失" class="headerlink" title="定位损失"></a>定位损失</h4><script type="math/tex; mode=display">
+P_{i, j,:}=f^{i j}(X), \text { s.t. } i \in[1, C], j \in[1, h]\\
+L_{c l s}=\sum_{i=1}^{C} \sum_{j=1}^{h} L_{C E}\left(P_{i, j,:}, T_{i, j,:}\right)</script><p>基于此，本文该模型计算得到简化，在模型上体现为：</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194917682.png" alt="image-20220301194917682"></p>
+<p>区别在于传统语义方法是整张图片，这里仅是预定义下的grid大小，同时 <strong>C仅取决于车道数量</strong></p>
+<p><strong>这里作者重复强调（w+1）中多出来的一维是用来存放附加信息的，这里放到是该row anchor是否存在车道</strong></p>
+<h4 id="车道结构损失"><a href="#车道结构损失" class="headerlink" title="车道结构损失"></a>车道结构损失</h4><p>作者认为整体车道应该均为近似直线，哪怕是弯道，大部分视野内也是直线</p>
+<p>相似损失（similarity loss）</p>
+<script type="math/tex; mode=display">
+L_{s i m}=\sum_{i=1}^{C} \sum_{j=1}^{h-1}\left\|P_{i, j,:}-P_{i, j+1,:}\right\|_{1}</script><p>形状损失（shape loss）</p>
+<script type="math/tex; mode=display">
+L o c_{i, j}=\underset{k}{\operatorname{argmax}} P_{i, j, k}, \text { s.t. } k \in[1, w]\\
+\operatorname{Prob}_{i, j,:}=\operatorname{softmax}\left(P_{i, j, 1: w}\right)\\
+L o c_{i, j}=\sum_{k=1}^{w} k \cdot \operatorname{Prob}_{i, j, k}\\
+\begin{aligned}
+L_{s h p}=\sum_{i=1}^{C} \sum_{j=1}^{h-2} & \|\left(L o c_{i, j}-L o c_{i, j+1}\right) 
+-\left(L o c_{i, j+1}-L o c_{i, j+2}\right) \|_{1}
+\end{aligned}</script><p>这里作者从一开始的<strong>argmax</strong>检测过渡到<strong>softmax</strong>检测有两点原因：</p>
+<ul>
+<li>softmax可微</li>
+<li>softmax可获得更多的连续信息</li>
+</ul>
+<p>后续作者也有做两者的对比实验，结果softmax略胜一筹</p>
+<p>最终得到</p>
+<script type="math/tex; mode=display">
+L_{s t r}=L_{s i m}+\lambda L_{s h p}</script><p>这里有一部分笔者觉得很妙，<strong>使用二阶微分做车道形状约束</strong>。如此，若为直线，则二阶的系数为零，这也是存在最多的情况，这样就不用设定专门的参数去学习一阶微分的分布。</p>
+<h4 id="总体结构损失"><a href="#总体结构损失" class="headerlink" title="总体结构损失"></a>总体结构损失</h4><script type="math/tex; mode=display">
+L_{\text {total }}=L_{c l s}+\alpha L_{s t r}+\beta L_{s e g}</script><p>其中$L_{seg}$为分割损失（segmentation loss），为交叉熵损失(cross entropy)</p>
+<h3 id="网络搭建"><a href="#网络搭建" class="headerlink" title="网络搭建"></a>网络搭建</h3><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200527681.png" alt="image-20220301200527681"></p>
+<p>训练模式下使用辅助分支（auxiliary branch），测试过程去除该分支</p>
+<h3 id="实验及结果"><a href="#实验及结果" class="headerlink" title="实验及结果"></a>实验及结果</h3><h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200739227.png" alt="image-20220301200739227"></p>
+<p>这里作者对数据集进行了强化处理，通过图片操作延伸了部分车道以便使模型更具<strong>普遍性</strong></p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200848886.png" alt="image-20220301200848886"></p>
+<h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><h5 id="cell数量"><a href="#cell数量" class="headerlink" title="cell数量"></a>cell数量</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201006488.png" alt="image-20220301201006488"></p>
+<h5 id="分类算法与回归算法"><a href="#分类算法与回归算法" class="headerlink" title="分类算法与回归算法"></a>分类算法与回归算法</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201035000.png" alt="image-20220301201035000"></p>
+<h5 id="结构损失函数"><a href="#结构损失函数" class="headerlink" title="结构损失函数"></a>结构损失函数</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201053128.png" alt="image-20220301201053128"></p>
+<p>这里使用分类方法有助于损失函数的平滑</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201123568.png" alt="image-20220301201123568"></p>
+<h4 id="对比结果"><a href="#对比结果" class="headerlink" title="对比结果"></a>对比结果</h4><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201152015.png" alt="image-20220301201152015"></p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201158942.png" alt="image-20220301201158942"></p>
+<h3 id="几个待解决的疑问"><a href="#几个待解决的疑问" class="headerlink" title="几个待解决的疑问"></a>几个待解决的疑问</h3><ul>
+<li>global feature 本质是什么？</li>
+<li>为什么row-based 有更好的感受野（receptive field）？</li>
+<li>which is caused by low-level pixel wise modeling and high-level long line structure of lane, can be bridged.这句的联系是什么？</li>
+<li>这里为何相乘后叠加</li>
+</ul>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201554795.png" alt="image-20220301201554795"></p>
+<ul>
+<li>一阶微分为什么比二阶微分约束力强？</li>
+<li><p>top1 top2 top3的概念不是很懂？</p>
+</li>
+<li><p>为什么一阶不用专门设计额外参数去学习？</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>DL</tag>
+        <tag>Lane Detection</tag>
+      </tags>
+  </entry>
+</search>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言 最近接触了自动驾驶方向的一个子任务——Lane Detection，即车道线检测，查阅相关的文献，着手复现《Ultra Fast Structure-aware Deep Lane Detection》这篇文章的模型实验，在此对实验复现以及论文内容做简要总结记录。 论文：Ultra Fast Structure-aware Deep Lane Detection 代码：code地址  实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ultral-Fast-Lane-Detection 整理">
+<meta property="og:url" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="AppZ99&#39;s Blog">
+<meta property="og:description" content="前言 最近接触了自动驾驶方向的一个子任务——Lane Detection，即车道线检测，查阅相关的文献，着手复现《Ultra Fast Structure-aware Deep Lane Detection》这篇文章的模型实验，在此对实验复现以及论文内容做简要总结记录。 论文：Ultra Fast Structure-aware Deep Lane Detection 代码：code地址  实验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194808716.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194917682.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200527681.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200739227.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200848886.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201006488.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201035000.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201053128.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201123568.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201152015.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201158942.png">
+<meta property="og:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201554795.png">
+<meta property="article:published_time" content="2022-03-01T09:33:03.000Z">
+<meta property="article:modified_time" content="2022-03-01T12:41:18.503Z">
+<meta property="article:author" content="AppZ99">
+<meta property="article:tag" content="DL">
+<meta property="article:tag" content="Lane Detection">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194808716.png">
+
+<link rel="canonical" href="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ultral-Fast-Lane-Detection 整理 | AppZ99's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AppZ99's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">OHHHH</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="AppZ99">
+      <meta itemprop="description" content="TKAW">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppZ99's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ultral-Fast-Lane-Detection 整理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 17:33:03 / 修改时间：20:41:18" itemprop="dateCreated datePublished" datetime="2022-03-01T17:33:03+08:00">2022-03-01</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p><strong>前言</strong></p>
+<p>最近接触了<strong>自动驾驶</strong>方向的一个子任务——<strong>Lane Detection</strong>，即车道线检测，查阅相关的文献，着手复现<strong>《Ultra Fast Structure-aware Deep Lane Detection》</strong>这篇文章的模型实验，在此对实验复现以及论文内容做简要总结记录。</p>
+<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2004.11757v4.pdf">Ultra Fast Structure-aware Deep Lane Detection</a></p>
+<p>代码：<a target="_blank" rel="noopener" href="https://github.com/cfzd/Ultra-Fast-Lane-Detection">code地址</a></p>
+</blockquote>
+<h2 id="实验复现"><a href="#实验复现" class="headerlink" title="实验复现"></a>实验复现</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>主要是深度学习环境的搭建，具体版本及搭建教程参考笔者这篇文章<a target="_blank" rel="noopener" href="https://appz99.github.io/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more">Ubuntu18.04下pytorch深度学习环境搭建</a> </p>
+<p>其中CUDA版本可以与作者不同。</p>
+<span id="more"></span>
+<h3 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h3><p>这里直接跟着作者的安装教程即可 <a target="_blank" rel="noopener" href="https://github.com/cfzd/Ultra-Fast-Lane-Detection/blob/master/INSTALL.md">INSTALL</a></p>
+<p>注意可视化部分需要安装作者的 <em>requirements</em>，在安装文档里作者有相应提示</p>
+<h3 id="下载数据集"><a href="#下载数据集" class="headerlink" title="下载数据集"></a>下载数据集</h3><p>直接去作者安装教程里的超链接即可，若网速受限则参考下一部分笔者推荐的文档里的百度云</p>
+<h3 id="数据集解压整理"><a href="#数据集解压整理" class="headerlink" title="数据集解压整理"></a>数据集解压整理</h3><p>这里笔者第一次跑模型不太懂，查了老半天资料数据集要怎么放，主要参考这篇文档：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46716951/article/details/112650165">车道线检测论文Ultra-Fast-Lane-Detection-master代码复现过程</a></p>
+<p>里面有数据集的百度云链接</p>
+<p>这里有个地方需要注意：笔者一开始看训练数据和测试数据有相同的文件夹，例如两者都有“0601”这个文件夹，笔者以为内容是一样的，所以就没有把测试集的数据<strong>合并</strong>一起，导致在最后跑测试集的时候，找不到对应的数据（但不影响训练）。所以<strong>相同命名文件夹要合并在一起</strong>。</p>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p>剩下部分直接跟着作者的README文档做即可</p>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>跑作者的<strong>demo.py</strong>文件即可，具体参考作者README中<strong>Visualization</strong></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>这里笔者在第一次跑训练模型的时候对<strong>train.py</strong>文件不做任何修改，导致每训练一次都保存一次训练好的模型，最后跑到70多轮的时候内存爆了……</p>
+<p>解决上述问题很好解决，在train.py文件中修改保存模型代码即可，以下是笔者所作修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(resume_epoch, cfg.epoch):</span><br><span class="line"></span><br><span class="line">        train(net, train_loader, loss_dict, optimizer, scheduler,logger, epoch, metric_dict, cfg.use_aux)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ((epoch + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>):<span class="comment">#作者一共跑100epoch</span></span><br><span class="line">            save_model(net, optimizer, epoch ,work_dir, distributed)</span><br><span class="line">    logger.close()</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h3 id="可视化训练过程"><a href="#可视化训练过程" class="headerlink" title="可视化训练过程"></a>可视化训练过程</h3><p>主要参考这篇教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bigbennyguo/article/details/87956434">详解PyTorch项目使用TensorboardX进行训练可视化</a></p>
+<p>但笔者没有配置任何东西……<del>（不太懂，不知道是不是作者已经配置好了什么）</del></p>
+<p>直接安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorboardX</span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir log_path --bind_all</span><br><span class="line"><span class="meta">#</span><span class="bash"> log_path为<span class="built_in">log</span>文件夹下对应的<span class="built_in">log</span>文件路径</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="论文学习"><a href="#论文学习" class="headerlink" title="论文学习"></a>论文学习</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>区别于传统的语义分割方法去做检测，作者采用了<strong>row-based selection problem using global features</strong>的方法去做车道检测，最大的优势在于<strong>计算量少，速度快；同时能根据global feature解决无视觉信息（no-visual-clue）情况下预测车道线位置，同时能取得不错的精度</strong>。在其轻量模型<strong>Res-18</strong>情况下能达到300+帧每秒。</p>
+<h3 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h3><p>总体来说每张图片预定义<strong>Row anchors</strong>同时指定<strong>(w+1)</strong>维的<strong>cells</strong>，检测就建立在上图预定义的网格之中。</p>
+<p>这里作者介绍了自己该模型的三大特点：</p>
+<ul>
+<li>利用 global features 更好解决 no-visual-clue 的问题</li>
+<li>区别传统语义分割方法检测</li>
+<li>计算少，速度快</li>
+</ul>
+<h3 id="方法（损失函数设计）"><a href="#方法（损失函数设计）" class="headerlink" title="方法（损失函数设计）"></a>方法（损失函数设计）</h3><p>各变量说明</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194808716.png" alt="image-20220301194808716"></p>
+<h4 id="定位损失"><a href="#定位损失" class="headerlink" title="定位损失"></a>定位损失</h4><script type="math/tex; mode=display">
+P_{i, j,:}=f^{i j}(X), \text { s.t. } i \in[1, C], j \in[1, h]\\
+L_{c l s}=\sum_{i=1}^{C} \sum_{j=1}^{h} L_{C E}\left(P_{i, j,:}, T_{i, j,:}\right)</script><p>基于此，本文该模型计算得到简化，在模型上体现为：</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301194917682.png" alt="image-20220301194917682"></p>
+<p>区别在于传统语义方法是整张图片，这里仅是预定义下的grid大小，同时 <strong>C仅取决于车道数量</strong></p>
+<p><strong>这里作者重复强调（w+1）中多出来的一维是用来存放附加信息的，这里放到是该row anchor是否存在车道</strong></p>
+<h4 id="车道结构损失"><a href="#车道结构损失" class="headerlink" title="车道结构损失"></a>车道结构损失</h4><p>作者认为整体车道应该均为近似直线，哪怕是弯道，大部分视野内也是直线</p>
+<p>相似损失（similarity loss）</p>
+<script type="math/tex; mode=display">
+L_{s i m}=\sum_{i=1}^{C} \sum_{j=1}^{h-1}\left\|P_{i, j,:}-P_{i, j+1,:}\right\|_{1}</script><p>形状损失（shape loss）</p>
+<script type="math/tex; mode=display">
+L o c_{i, j}=\underset{k}{\operatorname{argmax}} P_{i, j, k}, \text { s.t. } k \in[1, w]\\
+\operatorname{Prob}_{i, j,:}=\operatorname{softmax}\left(P_{i, j, 1: w}\right)\\
+L o c_{i, j}=\sum_{k=1}^{w} k \cdot \operatorname{Prob}_{i, j, k}\\
+\begin{aligned}
+L_{s h p}=\sum_{i=1}^{C} \sum_{j=1}^{h-2} & \|\left(L o c_{i, j}-L o c_{i, j+1}\right) 
+-\left(L o c_{i, j+1}-L o c_{i, j+2}\right) \|_{1}
+\end{aligned}</script><p>这里作者从一开始的<strong>argmax</strong>检测过渡到<strong>softmax</strong>检测有两点原因：</p>
+<ul>
+<li>softmax可微</li>
+<li>softmax可获得更多的连续信息</li>
+</ul>
+<p>后续作者也有做两者的对比实验，结果softmax略胜一筹</p>
+<p>最终得到</p>
+<script type="math/tex; mode=display">
+L_{s t r}=L_{s i m}+\lambda L_{s h p}</script><p>这里有一部分笔者觉得很妙，<strong>使用二阶微分做车道形状约束</strong>。如此，若为直线，则二阶的系数为零，这也是存在最多的情况，这样就不用设定专门的参数去学习一阶微分的分布。</p>
+<h4 id="总体结构损失"><a href="#总体结构损失" class="headerlink" title="总体结构损失"></a>总体结构损失</h4><script type="math/tex; mode=display">
+L_{\text {total }}=L_{c l s}+\alpha L_{s t r}+\beta L_{s e g}</script><p>其中$L_{seg}$为分割损失（segmentation loss），为交叉熵损失(cross entropy)</p>
+<h3 id="网络搭建"><a href="#网络搭建" class="headerlink" title="网络搭建"></a>网络搭建</h3><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200527681.png" alt="image-20220301200527681"></p>
+<p>训练模式下使用辅助分支（auxiliary branch），测试过程去除该分支</p>
+<h3 id="实验及结果"><a href="#实验及结果" class="headerlink" title="实验及结果"></a>实验及结果</h3><h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200739227.png" alt="image-20220301200739227"></p>
+<p>这里作者对数据集进行了强化处理，通过图片操作延伸了部分车道以便使模型更具<strong>普遍性</strong></p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301200848886.png" alt="image-20220301200848886"></p>
+<h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><h5 id="cell数量"><a href="#cell数量" class="headerlink" title="cell数量"></a>cell数量</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201006488.png" alt="image-20220301201006488"></p>
+<h5 id="分类算法与回归算法"><a href="#分类算法与回归算法" class="headerlink" title="分类算法与回归算法"></a>分类算法与回归算法</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201035000.png" alt="image-20220301201035000"></p>
+<h5 id="结构损失函数"><a href="#结构损失函数" class="headerlink" title="结构损失函数"></a>结构损失函数</h5><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201053128.png" alt="image-20220301201053128"></p>
+<p>这里使用分类方法有助于损失函数的平滑</p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201123568.png" alt="image-20220301201123568"></p>
+<h4 id="对比结果"><a href="#对比结果" class="headerlink" title="对比结果"></a>对比结果</h4><p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201152015.png" alt="image-20220301201152015"></p>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201158942.png" alt="image-20220301201158942"></p>
+<h3 id="几个待解决的疑问"><a href="#几个待解决的疑问" class="headerlink" title="几个待解决的疑问"></a>几个待解决的疑问</h3><ul>
+<li>global feature 本质是什么？</li>
+<li>为什么row-based 有更好的感受野（receptive field）？</li>
+<li>which is caused by low-level pixel wise modeling and high-level long line structure of lane, can be bridged.这句的联系是什么？</li>
+<li>这里为何相乘后叠加</li>
+</ul>
+<p><img src="/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/image-20220301201554795.png" alt="image-20220301201554795"></p>
+<ul>
+<li>一阶微分为什么比二阶微分约束力强？</li>
+<li><p>top1 top2 top3的概念不是很懂？</p>
+</li>
+<li><p>为什么一阶不用专门设计额外参数去学习？</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>AppZ99
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-%E6%95%B4%E7%90%86/" title="Ultral-Fast-Lane-Detection 整理">http://example.com/2022/03/01/Ultral-Fast-Lane-Detection-整理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DL/" rel="tag"><i class="fa fa-tag"></i> DL</a>
+              <a href="/tags/Lane-Detection/" rel="tag"><i class="fa fa-tag"></i> Lane Detection</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/26/Ubuntu18-04%E4%B8%8Bpytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="prev" title="Ubuntu18.04下pytorch深度学习环境搭建">
+      <i class="fa fa-chevron-left"></i> Ubuntu18.04下pytorch深度学习环境搭建
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0"><span class="nav-text">实验复现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2"><span class="nav-text">环境部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">下载数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E8%A7%A3%E5%8E%8B%E6%95%B4%E7%90%86"><span class="nav-text">数据集解压整理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="nav-text">可视化训练过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0"><span class="nav-text">论文学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D"><span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%88%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%EF%BC%89"><span class="nav-text">方法（损失函数设计）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%8D%9F%E5%A4%B1"><span class="nav-text">定位损失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%A6%E9%81%93%E7%BB%93%E6%9E%84%E6%8D%9F%E5%A4%B1"><span class="nav-text">车道结构损失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84%E6%8D%9F%E5%A4%B1"><span class="nav-text">总体结构损失</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA"><span class="nav-text">网络搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8F%8A%E7%BB%93%E6%9E%9C"><span class="nav-text">实验及结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cell%E6%95%B0%E9%87%8F"><span class="nav-text">cell数量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95%E4%B8%8E%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95"><span class="nav-text">分类算法与回归算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-text">结构损失函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C"><span class="nav-text">对比结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%BE%85%E8%A7%A3%E5%86%B3%E7%9A%84%E7%96%91%E9%97%AE"><span class="nav-text">几个待解决的疑问</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AppZ99"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">AppZ99</p>
+  <div class="site-description" itemprop="description">TKAW</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/APPZ99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;APPZ99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:925455893@qq.com" title="E-Mail → mailto:925455893@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1872048272&auto=1&height=66">
+        </iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AppZ99</span>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":500},"mobile":{"show":true}});</script></body>
+</html>
