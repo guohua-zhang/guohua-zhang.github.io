@@ -1,0 +1,9 @@
+﻿/*gotop*/
+#code,#code_hover,#gotop{ width:57px; height:58px; background:url("../images/code.jpg") no-repeat; position:fixed; right:50px; cursor:pointer;
+_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+}
+#code{background-position:-273px -250px; bottom:200px; _margin-bottom:130px;z-index:998;}
+#code_hover{background-position:-273px -250px; bottom:200px; _margin-bottom:130px;z-index:998;opacity:0.8;}
+#gotop{ background-position:-273px -306px;bottom:132px; _margin-bottom:172px;} 
+#code_img{ width:270px; height:355px; background:url("../images/code.jpg") -4px -3px no-repeat; position:fixed; right:108px; bottom:135px; cursor:pointer; display:none;z-index:999;
+_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); _margin-bottom:135px;}

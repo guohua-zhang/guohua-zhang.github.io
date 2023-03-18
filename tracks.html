@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>Tracks</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Js -->
+    <link rel="stylesheet" href="style/css/bootstrap.min.css">
+    <script src="style/js/jquery.min.js"></script>
+    <script src="style/js/tether.min.js"></script>
+    <script src="style/js/bootstrap.min.js"></script>
+    <link href="style/css/style.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body background="related/07.jpg">
+		<div class="nav">
+        <a class="logo" href="index.html"><img src="style/images/logo.png" width="40" title="红"></a>
+        <span id="site_runtime" style="color:white; font-size: xx-small;"></span>
+        <a class="logo pull-right sobtn"><span class="glyphicon glyphicon-search" style="color: #B4B4B4;"></span></a>
+    </div>
+		    <div class="container">
+        <div class="links">
+            <div class="linkt">
+                <h3>Tracks</h3>
+            </div>
+            <div class="linkb">
+                <ul class="row">
+                    <li class="col-md-4">
+                        <a href="test.html" target="_blank">
+                            <img src="img/12.jpg" width="30" />
+                            <b>photo album</b>
+                            <p>总和</p>
+                        </a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="shanghai.html" target="_blank">
+                            <img src="img/a3.jpg" width="30" />
+                            <b>ShangHai</b>
+                            <p>3D旋转相册</p>
+                        </a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="xian.html" target="_blank">
+                            <img src="img/08.jpg" width="30" />
+                            <b>Xi`An</b>
+                            <p>炫酷相册</p>
+                        </a>
+                    </li>
+               </ul>
+                
+            </div>
+        </div>
+    </div>
+		
+    <!--
+    	作者：15249239025@163.com
+    	时间：2019-04-18
+    	描述：时间
+    -->
+    <script type="text/javascript">
+    function show_site_runtime(){
+	window.setTimeout("show_site_runtime()",1000); // 每秒运行一次函数
+	X=new Date("04/10/2019 00:00:00"); //在这里修改你的建站时间
+	Y=new Date();
+	T=(Y.getTime()-X.getTime()); // 获取当前时间与指定时间之间的时间间隔（ms）	
+	i=24*60*60*1000;
+	d=T/i;
+	D=Math.floor(d); // 计算天数并向下取整
+	h=(d-D)*24;
+	H=Math.floor(h); // 计算剩余不足一天的小时数并向下取整
+	m=(h-H)*60;
+	M=Math.floor(m); // 计算剩余不足一小时的分钟数并向下取整
+	s=(m-M)*60;
+	S=Math.floor(s); // 计算剩余不足一分钟的秒数并向下取整
+	site_runtime.innerHTML="现在是："+ Y+ "<br>" +"网站已平稳运行："+D + " 天 " + H + " 小时 " + M + " 分 " + S + " 秒 ";
+    }
+	show_site_runtime();
+	</script>
+		
+	</body>
+</html>

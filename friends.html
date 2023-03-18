@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My--Friends</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Js -->
+    <link rel="stylesheet" href="style/css/bootstrap.min.css">
+    <script src="style/js/jquery.min.js"></script>
+    <script src="style/js/tether.min.js"></script>
+    <script src="style/js/bootstrap.min.js"></script>
+    <link href="style/css/style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="nav">
+        <a class="logo" href="index.html"><img src="style/images/logo.png" width="40" title="红"></a>
+           <span id="site_runtime" style="color:white; font-size: xx-small;"></span>
+        <a class="logo pull-right sobtn"><span class="glyphicon glyphicon-search" style="color: #B4B4B4;"></span></a>
+    </div>
+    <div class="container">
+        <div class="links">
+            <div class="linkt">
+                <h3>朋友们</h3>
+                <h5>Friends</h5>
+            </div>
+            <div class="linkb">
+                <ul class="row">
+                    <li class="col-md-4">
+                        <a href="https://www.cnblogs.com/" target="_blank">
+                            <img src="img/21.jpg" width="30" />
+                            <b>Cnblogs</b>
+                            <p>博客园是一个很好玩的地方</p>
+                        </a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="https://www.csdn.net/" target="_blank">
+                            <img src="img/03.png" width="30" />
+                            <b>CSDN</b>
+                            <p>CSDN也不错</p>
+                        </a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="https://www.cnblogs.com/Tom-shushu/" target="_blank">
+                            <img src="img/08.jpg" width="30" />
+                            <b>Tom-shuhsu 's Cnblogs</b>
+                            <p>或许你还希望到我的博客园区转转</p>
+                        </a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="https://github.com/Tom-shushu" target="_blank">
+                            <img src="img/timg.jpg" width="30" />
+                            <b>Tom-shuhsu 's GitHub</b>
+                            <p>站主的GitHub比较杂乱，什么都有，从“Javase” 到 “Java Web” 到 “数据结构与算法” 到 “框架” 到 “分布式架构”什么都有参考价值不是太大</p>
+                        </a>
+                    </li>
+
+
+                    <li class="col-md-4">
+                        <a href="https://gitbook.cn/" target="_blank">
+                            <img src="imgs/20.png" width="30" />
+                            <b>GitChat</b>
+                            <p>GitChat 是一款基于微信平台的知识分享产品,但是有好多都是付费的</p>
+                        </a>
+                    </li>
+
+					<li class="col-md-4">
+                        <a href="https://www.cxyquan.com/" target="_blank">
+                            <img src="imgs/21.png" width="30" />
+                            <b>程序猿圈</b>
+                            <p>程序猿圈是一个在线博客学习网站，网站主要发布一些编程技术、实用工具、
+                            	互联网资讯以及一些有趣好玩的东西 ，值得你去看看！</p>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="linka">
+                    <h3>申请友链</h3>
+                    <p>本站描述：此地无银三百两！</p>
+                    <hr />
+                    <p>申请友情链接之前请先在贵站做好本站的链接，然后通过以上格式发送Email，我将在最短的时间回复。Email：
+                        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1462533241@qq.com" target="_blank">1462533241@qq.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="clear"></div>
+    <div class="foot">
+        <!-- 弹出层 -->
+        <div class="so">
+            <i class="iconfont" title="关闭">×</i>
+            <div class="container">
+                <form action="https://www.baidu.com/baidu" target="_blank">
+                    <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
+                    <input type="text" name="word" class="form-control" baiduSug="1" value="百度搜索..." />
+                    <input type="submit" style="display: none;" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="to-top">↑</div>
+    <script src="style/js/GeeYo.js"></script>
+    <!--
+    	作者：15249239025@163.com
+    	时间：2019-04-18
+    	描述：时间
+    -->
+<script type="text/javascript">
+    function show_site_runtime(){
+	window.setTimeout("show_site_runtime()",1000); // 每秒运行一次函数
+	X=new Date("04/10/2019 00:00:00"); //在这里修改你的建站时间
+	Y=new Date();
+	T=(Y.getTime()-X.getTime()); // 获取当前时间与指定时间之间的时间间隔（ms）	
+	i=24*60*60*1000;
+	d=T/i;
+	D=Math.floor(d); // 计算天数并向下取整
+	h=(d-D)*24;
+	H=Math.floor(h); // 计算剩余不足一天的小时数并向下取整
+	m=(h-H)*60;
+	M=Math.floor(m); // 计算剩余不足一小时的分钟数并向下取整
+	s=(m-M)*60;
+	S=Math.floor(s); // 计算剩余不足一分钟的秒数并向下取整
+	site_runtime.innerHTML="现在是："+ Y+ "<br>" +"网站已平稳运行："+D + " 天 " + H + " 小时 " + M + " 分 " + S + " 秒 ";
+    }
+	show_site_runtime();
+</script>
+</body>
+
+</html>

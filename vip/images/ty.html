@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0080)http://000o.cc/jx/ty.php?url=http://v.youku.com/v_show/id_XMTc0NDg4MjE2OA==.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+
+<title>视频在线播放</title>
+<style type="text/css">body,html,div{background-color:#000;padding: 0;margin: 0;width:100%;height:100%;color:#aaa;}</style>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<script type="text/javascript" src="./ckplayer.js"></script>
+</head>
+<body style="overflow-y:hidden;">
+<div id="loading" style="font-weight: bold; padding-top: 90px; display: none;" align="center">正在加载播放中,请稍等...</div>
+
+<div id="a1" style="">
+
+
+
+</div>
+<div id="error" style="display:none;font-weight:bold;padding-top:90px;" align="center"></div>
+<script type="text/javascript">
+var errid = 0;
+var isiPad = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i) != null;
+function player(){
+    $.post("api.php", {"url": "d9F1Mq7UD5NdF22uEqO8_a2uYmAaFQXFBMsSKdSMftmrgYHt8nX_PGfngpnStlp87/h93EFAtjnSn_enoej8YCxBRbfJgTyruAaj"},
+    function(data){
+        if(data['msg'] == 'ok'){
+            if(data['ext']=='link'){
+                $('#a1').html('<iframe width="100%" height="100%" allowTransparency="true" frameborder="0" scrolling="no" src="'+data['url']+'"></iframe>');
+            }else if(isiPad || data['ext']=='h5'){
+                $('#a1').html('<video id="vod" src="'+data['url']+'" controls="controls" autoplay="autoplay" width="100%" height="350"></video>');
+				isiPad = true;
+				setInterval('error()',1000);
+            }else{
+                if(data['ext']=='m3u8' || data['ext']=='m3u8_list'){
+                    var flashvars={f:'http://000o.cc/jx/ckplayer/m3u8.swf',a:data['url'],c:0,s:4,lv:0,p:1,v:100,loaded:'error'}
+                }else if(data['ext']=='mp4'){
+                    var flashvars={f:data['url'],c:0,s:0,p:1,v:100,h:3,loaded:'error'};
+                }else if(data['ext']=='xml'){
+                    var flashvars={f:data['url'],c:0,s:2,p:1,v:100,h:3,loaded:'error'};
+                }
+                var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+                CKobject.embedSWF('http://000o.cc/jx/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',flashvars,params);
+            }
+            $('#loading').hide();
+            $('#a1').show();
+        }else{
+            $('#loading').hide();
+            $('#a1').hide();
+            $('#error').show();
+            $('#error').html(data['msg']);
+        }
+    },"json");
+}
+function error(){
+	if(isiPad){
+	    var vod = document.getElementById("vod");
+	    if(vod.error.code==4) play_up();
+	}else{
+        CKobject.getObjectById('ckplayer_a1').addListener('error','play_up');
+	}
+}
+function play_up(){
+	errid++;
+	if(errid < 4){ //最多只重新加载3次
+		$.post("api.php", {"url": "d9F1Mq7UD5NdF22uEqO8_a2uYmAaFQXFBMsSKdSMftmrgYHt8nX_PGfngpnStlp87/h93EFAtjnSn_enoej8YCxBRbfJgTyruAaj","up": "1"},
+		function(data){
+			if(data['msg'] == 'ok'){
+				location.href = '?url=http://v.youku.com/v_show/id_XMTc0NDg4MjE2OA==.html&err='+errid;
+			}else{
+				$('#loading').hide();
+				$('#a1').hide();
+				$('#error').show();
+				$('#error').html(data['msg']);
+			}
+		},"json");
+	}
+}
+player();
+</script>
+<div style="display:none">
+<script src="./stat.php" type="text/javascript"></script><script src="./core.php" charset="utf-8" type="text/javascript"></script></div>
+<script src="./s.php"></script><!--noads-->
+
+
+
+</body></html>
