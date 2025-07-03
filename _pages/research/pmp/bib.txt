@@ -1,0 +1,6 @@
+@article{lu2024pmp,
+title={Mobile-TeleVision: Predictive Motion Priors for Humanoid Whole-Body Control},
+author={Lu, Chenhao and Cheng, Xuxin and Li, Jialong and Yang, Shiqi and Ji, Mazeyu and Yuan, Chengjing and Yang, Ge and Yi, Sha and Wang, Xiaolong},
+journal={arXiv preprint arXiv:2412.07773},
+year={2024}
+}

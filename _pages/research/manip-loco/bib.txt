@@ -1,0 +1,6 @@
+@article{deep-wbc,
+  author = {Fu, Zipeng and Cheng, Xuxin and Pathak, Deepak},
+  title  = {Deep Whole-Body Control: Learning a Unified Policy for Manipulation and Locomotion},
+  journal= {Conference on Robot Learning (CoRL)},
+  year   = {2022}
+}

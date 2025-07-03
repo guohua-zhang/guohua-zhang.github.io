@@ -1,31 +1,259 @@
----
-layout: compress
----
+<!DOCTYPE HTML>
+<html lang="en">
 
-{% include base_path %}
+<head>
+  {% if jekyll.environment == 'production' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1CLN7VBVH"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
+    gtag('config', 'G-T1CLN7VBVH');
+    </script>
+  {% endif %}
 
-  <body>
+  <title>Xuxin Cheng</title>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-    {{ content }}
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="shortcut icon" type="images/png" href="images/favicon.png">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+  <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+  {% if site.google_analytics and jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
+</head>
 
-    {% include scripts.html %}
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
+          <tr style="padding:0px">
+            <td style="padding:1.5%;width:70%;vertical-align:middle">
+              <h1>
+                Xuxin Cheng
+              </h1>
+              <p align='center'>xucheng [at] ucsd.edu</p>
+              <p>I am a final-year PhD student at UC San Diego working with <a href="https://xiaolonw.github.io">Xiaolong Wang</a>. I have had the opportunity to work with <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a> at CMU, as well as <a href="https://hybrid-robotics.berkeley.edu/koushil">Koushil Sreenath</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> at UC Berkeley. 
+                I build real-world robot systems.
+              </p>
+              <p>
+                I love snowboarding 🏂 and scuba diving 🤿 in my free time.
+              </p>
+              
+              <p style="text-align:center">
+                <a href="/docs/CV.pdf">CV</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://github.com/chengxuxin">GitHub</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://scholar.google.com/citations?hl=en&user=Z8vhOxYAAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://twitter.com/xuxin_cheng">Twitter</a>
+              </p>
+            </td>
+            <td style="padding:3%;width:30%;max-width:30%">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/grad.jpg">
+            </td>
+          </tr>
+        </table>
+        
+        
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
+          <tr>
+            <td>
+              <h2>Highlights</h2>
+              <table style="width:100%;border:0px;border-spacing:20px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
+                <tr>
+                  <td style="width:50%;vertical-align:top">
+                    <video style="width:100%;height:auto" controls autoplay muted loop>
+                      <source src="videos/pakour_live_demo-comp.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <p style="text-align:center;margin-top:10px;font-size:14px">
+                      Extreme Parkour: Live demo at CoRL 2023.
+                    </p>
+                  </td>
+                  <td style="width:50%;vertical-align:top">
+                    <video style="width:100%;height:auto" controls autoplay muted loop>
+                      <source src="videos/amo.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <p style="text-align:center;margin-top:10px;font-size:14px">
+                      AMO: Full kinematic workspace control for humanoids.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:50%;vertical-align:top">
+                    <video style="width:100%;height:auto" controls autoplay muted loop>
+                      <source src="videos/tv.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <p style="text-align:center;margin-top:10px;font-size:14px">
+                      OpenTeleVision: Coast-to-coast immersive teleoperation.
+                    </p>
+                  </td>
+                  <td style="width:50%;vertical-align:top">
+                    <video style="width:100%;height:auto" controls autoplay muted loop>
+                      <source src="videos/human_policy.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <p style="text-align:center;margin-top:10px;font-size:14px">
+                      Human-as-Robot: Mixing human and humanoid data for scaling up robot learning.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
 
-  </body>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
+          <tr>
+            <td>
+              <h2>News</h2>
+              <ul>
+                <li>[06/2025] Invited talk at Meta</li>
+                <li>[03/2025] Multiple work featured on Nvidia GTC
+                <li>[06/2024] Invited talk at <a href="https://covariant.ai/">Covariant</a></li>
+                <li>[03/2024] Invited talk at UMich Computer Vision Seminar</li>
+                <!-- <li>[03/2024] Invited talk at <a href="https://www.techbeat.net/talk-info?id=854">TechBeat</a></li> -->
+                <li>[02/2024] Invited talk at <a href="https://www.youtube.com/watch?v=ZKWi_BXq0PQ">Mila Robot Learning Seminar</a></li>
+                <!-- <li>[01/2024] Invited talk at <a href="https://www.bilibili.com/video/BV1sF4m137mW/?share_source=copy_web&vd_source=d1854f07b408b9880a4b0901d87a05cf">RL China</a></li> -->
+                <li>[10/2023] Invited talk at <a href="https://real.stanford.edu/">Stanford REAL Lab</a></li>
+              </ul>
+            </td>
+          </tr>
+          
+        </table>
+        
+        <br><br>
+
+        <h2>Research</h2>
+        <hr>
+        * denotes equal contribution
+        <script >
+        function togglebib(paperid)
+        {
+            var paper = document.getElementById(paperid) ;
+            var bib = paper.getElementsByTagName('blockquote') ;
+            if (bib.length > 0) {
+                if (bib [0] .style.display == 'none') {
+                    bib [0] .style.display = 'block' ;
+                } else {
+                    bib [0] .style.display = 'none' ;
+                }
+            }
+        }
+        </script>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
+          {% for rsc in site.posts %}
+          {% for cat in rsc.categories %}
+          {% if cat == 'research' %}
+          <tr {% if rsc.gif or rsc.video %}onmouseout="{{rsc.abbr}}_stop()" onmouseover="{{rsc.abbr}}_start()"{% endif %}>
+            <td style="padding:0px 0px;width:30%;vertical-align:middle;min-width:120px">
+              
+              <div class="one" style="width:100%; height:auto; max-width:100%">
+                <div class="two" id='{{rsc.image}}' style="width:100%; height:auto; max-width:100%">
+                  <a href="{{rsc.webpage}}">
+                    <img src='{{rsc.image}}' style="width:100%; height:auto; max-width:100%">
+                  </a>
+                </div>
+                {% if rsc.gif %}
+                <img src='{{rsc.gif}}' style="width:100%; height:auto; max-width:100%">
+                {% elsif rsc.video %}
+                <video src='{{rsc.video}}' style="width:100%; height:auto; max-width:100%" autoplay muted loop></video>
+                {% else %}
+                <img src='{{rsc.image}}' style="width:100%; height:auto; max-width:100%">
+                {% endif %}
+              </div>
+              <script type="text/javascript">
+                function {{rsc.abbr}}_start() {
+                  document.getElementById('{{rsc.image}}').style.opacity = "0";
+                }
+
+                function {{rsc.abbr}}_stop() {
+                  document.getElementById('{{rsc.image}}').style.opacity = "1";
+                }
+                nlt_stop()
+              </script>
+              <!-- {% if rsc.gif %}
+              <img src="{{rsc.image}}" onmouseover="src='{{rsc.gif}}'" onmouseout="src='{{rsc.image}}'" style="width:100%; height:auto; max-width:100%"/>
+              {% else %}
+              <img src="{{rsc.image}}" alt="research image" style="width:auto; height:auto; max-width:100%" />
+              {% endif %} -->
+            </td>
+            <td style="padding:20px 0px 20px 40px;width:70%;vertical-align:middle">
+                <a href="{{rsc.webpage}}"><h3>{{rsc.title}}</h3></a><br>
+              
+              {% if rsc.author %}
+              {{rsc.author}}
+              {% endif %}
+
+              {% if rsc.publishedOn %}
+              <br>
+              <em>{{rsc.publishedOn}}</em>
+              {% endif %}<br><br>
+              
+              {% if rsc.links %}
+              {{rsc.links}}
+                {% if rsc.bib %}
+                  | <a href="javascript:togglebib('{{rsc.abbr}}')">BibTeX</a> <br>
+                  <div class="paper" id="{{rsc.abbr}}">
+                    <blockquote style="display:none">
+                    <!-- <pre xml:space="preserve" style="display:none"> -->
+                      <!-- <embed src="{{rsc.bib}}" type="text/plain" width="100%" height="200px" /> -->
+                      <!-- <object data="{{rsc.bib}}" width="100%"></object> -->
+                      <!-- {{rsc.bib}} -->
+                      <iframe src="{{rsc.bib}}" scrolling='auto' frameborder='0' width="100%" height="100%">
+                      </iframe>
+                    <!-- </pre> -->
+                    </blockquote>
+                  </div>
+                {% endif %}
+              {% endif %}
+              
+              <!-- <blockquote>
+@article{fu2022learning,
+  author = {Fu, Zipeng and Cheng, Xuxin and Pathak, Deepak},
+  title  = {Learning a Unified Policy for Whole-Body Control of Manipulation and Locomotion},
+  journal= {Conference on Robot Learning (CoRL)},
+  year   = {2022}
+}
+              </blockquote> -->
+              
+              {% if rsc.media %}
+              Media: {{rsc.media}}&nbsp
+              {% endif %}
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>
+        
+        
+
+        <br> <br> <br> <br> <hr> <br>
+        
+        <table border="0" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+          <td style="padding:0px 0px 0px 0px;width:20%;vertical-align:bottom">
+            <p style="text-align:right;font-size:small;">
+              <!-- <a style="font-size:small;" href="https://github.com/chengxuxin/chengxuxin.github.io">source code</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+              <a style="font-size:small;" href="https://jonbarron.info">website template</a>
+            </p>
+          </td>
+          </tr>
+        </table>
+      
+      </td>
+    </tr>
+  </table>
+</body>
 </html>
+

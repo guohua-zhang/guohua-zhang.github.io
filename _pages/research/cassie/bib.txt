@@ -1,0 +1,9 @@
+@conference{ ICRA2021_RL-Cassie-Walking,
+author={ Zhongyu Li and Xuxin Cheng and Xue Bin Peng and Pieter Abbeel and Sergey Levine and Glen Berseth and Koushil Sreenath },
+title={ Reinforcement Learning for Robust Parameterized Locomotion Control of Bipedal Robots },
+booktitle={ IEEE International Conference on Robotics and Automation (ICRA) },
+pages={ },
+month={ June },
+year={ 2021 },
+address={ Xi'an, China },
+}

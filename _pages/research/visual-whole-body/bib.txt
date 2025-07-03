@@ -1,0 +1,6 @@
+@article{liu2024visual,
+title={Visual Whole-Body Control for Legged Loco-Manipulation},
+author={Liu, Minghuan and Chen, Zixuan and Cheng, Xuxin and Ji, Yandong and Yang, Ruihan and Wang, Xiaolong},
+journal={arXiv preprint arXiv:2402.16796},
+year={2024}
+}

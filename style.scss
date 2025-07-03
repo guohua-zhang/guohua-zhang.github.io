@@ -1,0 +1,123 @@
+---
+---
+
+//
+// IMPORTS
+//
+
+//@import "reset";
+//@import "variables";
+// Syntax highlighting @import is at the bottom of this file
+
+/**************/
+/* BASE RULES */
+/**************/
+a {
+  color: #07889b;/*#1772d0;*/
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+img {
+  border: 0px solid #555;
+  border-radius: 5px;
+}
+
+video{
+  border: 0px solid #555;
+  border-radius: 5px;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family:  Nunito; //, Lato, Verdana, Helvetica, sans-serif;
+  // font-family:  'TeXGyrePagella', 'Palatino Linotype', "Book Antiqua", Palatino, serif;
+  // font-size: 15px; /*14px*/
+  font-display: auto;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+strong {
+  font-family:  Nunito, 'Lato', Verdana, Helvetica, sans-serif;
+  // font-size: 16px;
+  font-weight: 700;
+  font-display: auto;
+}
+
+h2 {
+  // font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family:  Nunito, 'Lato', Verdana, Helvetica, sans-serif;
+  // font-family:  'TeXGyrePagella', 'Palatino Linotype', "Book Antiqua", Palatino, serif;
+  font-size: 24px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h3 {
+  font-family:  Nunito, 'Lato', Verdana, Helvetica, sans-serif;
+  // font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  // font-family:  'TeXGyrePagella', 'Palatino Linotype', "Book Antiqua", Palatino, serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h1 {
+  font-family: Nunito, 'TeXGyrePagella', 'Palatino Linotype', "Book Antiqua", Palatino, serif;
+  font-size: 46px;
+  font-weight: normal;
+  font-display: auto;
+  text-align: center;
+  padding: 0px;
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+// Settled on moving the import of syntax highlighting to the bottom of the CSS
+// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+//@import "highlights";
+//@import "svg-icons";

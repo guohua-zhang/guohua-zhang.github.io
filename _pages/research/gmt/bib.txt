@@ -1,0 +1,6 @@
+@article{chen2025gmt,
+title={GMT: General Motion Tracking for Humanoid Whole-Body Control},
+author={Chen, Zixuan and Ji, Mazeyu and Cheng, Xuxin and Peng, Xuanbin and Peng, Xue Bin and Wang, Xiaolong},
+journal={arXiv:2506.14770},
+year={2025}
+}

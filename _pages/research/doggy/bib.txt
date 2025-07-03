@@ -1,0 +1,6 @@
+@inproceedings{wu2024helpful,
+    author    = {Wu, Qi and Fu, Zipeng and Cheng, Xuxin and Wang, Xiaolong and Finn, Chelsea},
+    title     = {Helpful DoggyBot: Open-World Object Fetching using Legged Robots and Vision-Language Models},
+    booktitle = {arXiv},
+    year      = {2024},
+}

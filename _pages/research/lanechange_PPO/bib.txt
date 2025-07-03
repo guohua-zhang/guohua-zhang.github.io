@@ -1,0 +1,8 @@
+@inproceedings{ye2020automated,
+  title={Automated lane change strategy using proximal policy optimization-based deep reinforcement learning},
+  author={Ye, Fei and Cheng, Xuxin and Wang, Pin and Chan, Ching-Yao and Zhang, Jiucai},
+  booktitle={2020 IEEE Intelligent Vehicles Symposium (IV)},
+  pages={1746--1752},
+  year={2020},
+  organization={IEEE}
+}

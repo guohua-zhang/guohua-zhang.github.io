@@ -1,0 +1,7 @@
+@article{qiu2025human,
+  title={Humanoid Policy ~ Human Policy}, 
+  author={Qiu, Ri-Zhao and Yang, Shiqi and Cheng, Xuxin and Chawla, Chaitanya and Li, Jialong and He, Tairan and Yan, Ge and Yoon, David J. and Hoque, Ryan and Paulsen, Lars and Yang, Ge and Zhang, Jian and Yi, Sha and Shi, Guanya and Wang, Xiaolong},
+
+  journal={arXiv preprint arXiv:2503.13441},
+  year={2025},
+  }

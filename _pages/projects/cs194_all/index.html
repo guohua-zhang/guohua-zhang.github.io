@@ -1,0 +1,105 @@
+---
+---
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>CS194 Projects Collection</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="shortcut icon" type="images/png" href="images/favicon.png">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  {% if site.google_analytics and jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
+</head>
+
+<body>
+  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        
+        <br><br><br>
+        <a href="{{ site.url}}"><h2>Home</h2></a>
+        <hr>
+
+        <table border="0" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          {% for proj in site.posts %}
+          {% for cat in proj.categories %}
+          {% if cat == 'cs194' %}
+          
+        <tr {% if proj.gif %}onmouseout="{{proj.abbr}}_stop()" onmouseover="{{proj.abbr}}_start()"{% endif %}>
+            <td style="padding:20px 0px;width:20%;vertical-align:middle;min-width:120px">
+              <div class="one" style="width:100%; height:auto; max-width:100%">
+                <div class="two" id='{{proj.image}}' style="width:100%; height:auto; max-width:100%">
+                  <img src='{{site.url}}/{{proj.image}}' style="width:100%; height:auto; max-width:100%">
+                </div>
+                {% if proj.gif %}
+                <img src='{{site.url}}/{{proj.gif}}' style="width:100%; height:auto; max-width:100%">
+                {% else %}
+                <img src='{{site.url}}/{{proj.image}}' style="width:100%; height:auto; max-width:100%">
+                {% endif %}
+              </div>
+              <script type="text/javascript">
+                function {{proj.abbr}}_start() {
+                  document.getElementById('{{proj.image}}').style.opacity = "0";
+                }
+
+                function {{proj.abbr}}_stop() {
+                  document.getElementById('{{proj.image}}').style.opacity = "1";
+                }
+                nlt_stop()
+              </script>
+              <!-- {% if proj.gif %}
+              <img src="{{proj.image}}" onmouseover="src='{{proj.gif}}'" onmouseout="src='{{proj.image}}'" style="width:auto; height:auto; max-width:100%"/>
+              {% else %}
+              <img src="{{proj.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+              {% endif %} -->
+            </td>
+            <td style="padding:0px 0px 0px 40px;width:80%;vertical-align:middle">
+              <h3>{{proj.title}}</h3>
+              <br><br>
+              {% if proj.page %}
+              [<a href="{{site.url}}/{{proj.page}}">Project page</a>]&nbsp
+              {% endif %}
+              {% if proj.code %}
+              [<a href="{{proj.code}}">Code</a>]&nbsp
+              {% endif %}
+              {% if proj.video %}
+              [<a href="{{proj.video}}">Video</a>]&nbsp
+              {% endif %}
+              <p>
+                {{ proj.intro }}
+              </p>
+              
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td>
+              <br><br><br><br>
+              <p style="text-align:right;font-size:small;">
+                <a style="font-size:small;" href="style="font-size:small;">source code</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="font-size:small;" href="https://jonbarron.info">credits</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+

@@ -1,0 +1,6 @@
+@inproceedings{cheng2023legmanip,
+title={Legs as Manipulator: Pushing Quadrupedal Agility Beyond Locomotion},
+author={Cheng, Xuxin and Kumar, Ashish and Pathak, Deepak},
+booktitle={2023 IEEE International Conference on Robotics and Automation (ICRA)},
+year={2023},
+}

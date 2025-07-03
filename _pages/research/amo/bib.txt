@@ -1,0 +1,6 @@
+@article{li2025amo,
+title={AMO: Adaptive Motion Optimization for Hyper-Dexterous Humanoid Whole-Body Control},
+author={Li, Jialong and Cheng, Xuxin and Huang, Tianshu and Yang, Shiqi and Qiu, Rizhao and Wang, Xiaolong},
+journal={Robotics: Science and Systems 2025},
+year={2025}
+}

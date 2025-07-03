@@ -1,0 +1,6 @@
+@article{cheng2023parkour,
+title={Extreme Parkour with Legged Robots},
+author={Cheng, Xuxin and Shi, Kexin and Agarwal, Ananye and Pathak, Deepak},
+journal={arXiv preprint arXiv:2309.14341},
+year={2023}
+}

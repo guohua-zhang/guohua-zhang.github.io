@@ -1,0 +1,6 @@
+@article{cheng2024express,
+title={Expressive Whole-Body Control for Humanoid Robots},
+author={Cheng, Xuxin and Ji, Yandong and Chen, Junming and Yang, Ruihan and Yang, Ge and Wang, Xiaolong},
+journal={arXiv preprint arXiv:2402.16796},
+year={2024}
+}
